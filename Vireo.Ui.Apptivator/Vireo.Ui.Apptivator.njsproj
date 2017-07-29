@@ -28,9 +28,58 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\components\FileInput\FileInput.js" />
+    <Compile Include="app\components\FileInput\index.js" />
+    <Compile Include="app\components\TodoForm.js" />
+    <Compile Include="app\components\TodoList.js" />
+    <Compile Include="app\components\Touchable.js" />
+    <Compile Include="app\containers\Checkout.js" />
+    <Compile Include="app\containers\ContactTab.js" />
+    <Compile Include="app\containers\HomeTab.js" />
+    <Compile Include="app\containers\NewTodo.js" />
+    <Compile Include="app\entry\index.js" />
+    <Compile Include="app\reducers\appContent.js" />
+    <Compile Include="app\reducers\index.js" />
+    <Compile Include="app\reducers\todos.js" />
+    <Compile Include="app\reducers\__tests__\todos-test.js" />
+    <Compile Include="app\sagas\appContent.js" />
+    <Compile Include="app\sagas\index.js" />
+    <Compile Include="app\sagas\__tests__\todos-test.js" />
+    <Compile Include="app\screens\index.js" />
+    <Compile Include="app\screens\MainScreen.js" />
+    <Compile Include="app\screens\NewTodoScreen.js" />
+    <Compile Include="app\screens\PurchaseScreen.js" />
+    <Compile Include="app\services\apiCall.js" />
+    <Compile Include="app\services\appGenerator.js" />
+    <Compile Include="app\stories\Touchable.js" />
+    <Compile Include="app\stylesheets\TodoList.js" />
+    <Compile Include="app\themes\banzhow.js" />
+    <Compile Include="app\themes\yayoi.js" />
+    <Compile Include="Content.js" />
+    <Compile Include="index.web.js" />
     <Compile Include="server.js" />
+    <Content Include="app\assets\react-native-web.png" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\" />
+    <Folder Include="app\assets\" />
+    <Folder Include="app\components\" />
+    <Folder Include="app\components\FileInput\" />
+    <Folder Include="app\containers\" />
+    <Folder Include="app\entry\" />
+    <Folder Include="app\reducers\" />
+    <Folder Include="app\reducers\__tests__\" />
+    <Folder Include="app\sagas\" />
+    <Folder Include="app\sagas\__tests__\" />
+    <Folder Include="app\screens\" />
+    <Folder Include="app\services\" />
+    <Folder Include="app\stories\" />
+    <Folder Include="app\stylesheets\" />
+    <Folder Include="app\themes\" />
+    <Folder Include="server\" />
+    <Folder Include="shared\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
