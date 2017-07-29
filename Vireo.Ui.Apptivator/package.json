@@ -1,0 +1,9 @@
+{
+  "name": "vireo.ui.apptivator",
+  "version": "0.0.0",
+  "description": "Vireo.Ui.Apptivator",
+  "main": "server.js",
+  "author": {
+    "name": "srt04"
+  }
+}
