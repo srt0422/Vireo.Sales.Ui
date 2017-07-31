@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NewTodo from '../containers/NewTodo';
 
 class NewTodoScreen extends Component {
 

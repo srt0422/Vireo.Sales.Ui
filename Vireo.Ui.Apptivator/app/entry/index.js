@@ -11,7 +11,7 @@ import logger from 'redux-logger'
 
 const sagaMiddleware = createSagaMiddleware();
 const enhancer = compose(
-    applyMiddleware(sagaMiddleware, logger),
+    applyMiddleware(sagaMiddleware),
     window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
@@ -21,7 +21,7 @@ sagaMiddleware.run(rootSaga);
 
 export default function Entry() {
     return (
-        <StripeProvider apiKey="pk_live_z9gGQ7VQqfGifVUMA3seCzlH">
+        <StripeProvider apiKey={"pk_test_dSYlbJzOrMdCFhDYMUtVFUXH" /*"pk_live_z9gGQ7VQqfGifVUMA3seCzlH"*/}>
             <Provider store={store}>
                 <Router />
             </Provider>

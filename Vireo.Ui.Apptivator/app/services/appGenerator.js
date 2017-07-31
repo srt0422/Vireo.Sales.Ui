@@ -1,6 +1,6 @@
 ﻿const content = {};
 
-export function* setField(field) {
+export function setField(field) {
     if (field.name.indexOf("[") !== -1) {
 
         let keys = field.name.split(".");
@@ -37,7 +37,7 @@ export function* setField(field) {
     }
 }
 
-export function* fetch() {
+export function fetch() {
     return content;
 }
 

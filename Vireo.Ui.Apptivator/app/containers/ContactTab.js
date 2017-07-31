@@ -19,7 +19,6 @@ import { Text, RefreshControl, Image, Dimensions, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import FileInput from "../components/FileInput";
 import theme from '../themes/banzhow';
-import TodoList from '../components/TodoList';
 import Contents from "../../Content";
 
 class ContactTab extends Component {
@@ -54,7 +53,7 @@ class ContactTab extends Component {
                 <Content refreshControl={
                     <RefreshControl
                         refreshing={this.props.isLoading}
-                        onRefresh={() => { this.props.dispatch({ type: 'appContent/get' }) }}
+                        onRefresh={() => { this.props.dispatch({ type: 'appContents/get' }) }}
                     />}
                     style={theme.contentContainer} >
                     <View style={{
@@ -206,7 +205,7 @@ class ContactTab extends Component {
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <Button onPress={this.onCreateApp.bind(this)}>Create App</Button>
+                            <Button large onPress={this.onCreateApp.bind(this)}>Create App</Button>
                         </ListItem>
                     </List>
                 </Content>
@@ -219,7 +218,7 @@ class ContactTab extends Component {
         const { dispatch } = this.props;
 
         dispatch({
-            type: 'appContent/set',
+            type: 'appContents/set',
             payload: {
                 name: e.target.name,
                 value: e.target.value
@@ -243,10 +242,9 @@ class ContactTab extends Component {
     }
 }
 
-function mapStateToProps({ appContent }) {
+function mapStateToProps({ appContents }) {
     return {
-        content: appContent.content,
-        isLoading: appContent.isLoading
+        ...appContents
     };
 }
 

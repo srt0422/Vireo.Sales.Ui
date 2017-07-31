@@ -13,7 +13,6 @@ import {
 import { Text, RefreshControl, Image, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import theme from '../themes/banzhow';
-import TodoList from '../components/TodoList';
 import Contents from "../../Content";
 
 class HomeTab extends Component {
@@ -51,7 +50,7 @@ class HomeTab extends Component {
 
     render() {
         return (
-            <Container style={{height: Dimensions.get("window").height - 50}} theme={theme}>
+            <Container style={{ height: Dimensions.get("window").height - 50 }} theme={theme}>
                 <Header>
                     <Button transparent>
                         <Image source={Contents.companyLogoUrl}
@@ -64,10 +63,10 @@ class HomeTab extends Component {
                 </Header>
                 <Content refreshControl={
                     <RefreshControl
-                        refreshing={false}
-                        onRefresh={() => { }}
+                        refreshing={this.props.isLoading}
+                        onRefresh={() => { this.props.dispatch({ type: 'appContents/get' }) }}
                     />}
-                    style={ theme.contentContainer }
+                    style={theme.contentContainer}
                     contentContainerStyle={{ flexShrink: 1, alignItems: "stretch" }}>
                     <View style={{
                         alignItems: "center", paddingTop: "45px", paddingBottom: "50px"
@@ -116,7 +115,7 @@ class HomeTab extends Component {
                                 boxShadow: "none"
                             }} key={i} className="panel panel-default text-center" >
                                 <View style={{
-                                    backgroundColor: "#16a085",
+                                    backgroundColor: theme.subHeadingDefaultBg,
                                     borderRadius: 0,
                                     borderWidth: 0,
                                     paddingVertical: "10px",
@@ -154,7 +153,7 @@ class HomeTab extends Component {
                                     ))}
 
                                     <ListItem onClick={this.props.onCallToAction} onPress={this.props.onCallToAction} style={theme.callToActionContainer} className="list-group-item">
-                                        <Button data-ajax="false" className="btn btn-primary ui-link" href="#sign_up">{offer.callToAction}</Button>
+                                        <Button block className="btn btn-primary ui-link" href="#sign_up">{offer.callToAction}</Button>
                                     </ListItem>
                                 </List>
                             </View>
@@ -166,9 +165,9 @@ class HomeTab extends Component {
     }
 }
 
-function mapStateToProps({ }) {
+function mapStateToProps({ appContents }) {
     return {
-
+        ...appContents
     };
 }
 

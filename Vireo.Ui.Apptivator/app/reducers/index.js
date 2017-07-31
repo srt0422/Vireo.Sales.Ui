@@ -1,9 +1,10 @@
 //Import all reducers
-import appContent from './appContent';
+import appContents from './appContents';
+import payments from './payments';
 
 const reducers = {
-  appContent,
-  //Place other reducers here
+    appContents,
+    payments
 };
 
 export default reducers;

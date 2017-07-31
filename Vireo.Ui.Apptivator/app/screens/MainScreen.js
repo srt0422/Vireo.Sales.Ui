@@ -3,7 +3,7 @@ import {
     TabBarIOS,
     Text,
 } from 'react-native';
-import yayoiTheme from '../themes/banzhow';
+import theme from '../themes/banzhow';
 import HomeTab from '../containers/HomeTab';
 import ContactTab from '../containers/ContactTab';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -42,16 +42,16 @@ class MainScreen extends Component {
     render() {
         return (
             <TabBarIOS                
-                tintColor={yayoiTheme.brandPrimary}
-                unselectedTintColor={yayoiTheme.grey}>                
+                tintColor={theme.brandPrimary}
+                unselectedTintColor={theme.grey}>                
                 <Icon.TabBarItem
                     title="Home"
                     iconName="ios-home-outline"
                     selectedIconName="ios-home"
                     selected={ this.state.tabIndex === 0}
                     onPress={() => this.setState({ tabIndex: 0 })}
-                    iconColor={yayoiTheme.grey}
-                    selectedIconColor={yayoiTheme.brandPrimary}
+                    iconColor={theme.grey}
+                    selectedIconColor={theme.brandPrimary}
                     style={{flex: 1}}>
                     <HomeTab
                         onCallToAction={this.callToAction.bind(this)} />
@@ -64,8 +64,8 @@ class MainScreen extends Component {
                     selectedIconName="ios-paperplane"
                     selected={this.state.tabIndex === 1}
                     onPress={() => this.setState({ tabIndex: 1 })}
-                    iconColor={yayoiTheme.grey}
-                    selectedIconColor={yayoiTheme.brandPrimary}>
+                    iconColor={theme.grey}
+                    selectedIconColor={theme.brandPrimary}>
                     <ContactTab onSubmit={this.submit.bind(this)} />
                 </Icon.TabBarItem>
                 {/*

@@ -1,10 +1,16 @@
 {
+"sourceMap": true,
   "presets": [
     "es2015",
+    "es2017",
     "stage-0",
-    "react"
+    "stage-2",
+    "react",
+    "env"
   ],
   "plugins": [
-    "transform-decorators-legacy"
+    "transform-regenerator",
+    "transform-runtime",
+    "transform-class-properties"
   ]
 }

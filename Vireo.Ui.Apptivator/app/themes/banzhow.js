@@ -2,7 +2,7 @@ import Color from 'color';
 
 import { Platform } from 'react-native';
 
-export default {
+let theme = {
     brandPrimary: '#ff5917',
     brandInfo: '#ddd',
     brandSuccess: '#5cb85c',
@@ -68,6 +68,9 @@ export default {
     iosToolbarBtnColor: '#fff',
 
     toolbarTextColor: '#fff',
+
+    //Custom
+    subHeadingDefaultBg: "#16a085",
 
     checkboxBgColor: '#039BE5',
     checkboxTickColor: '#fff',
@@ -181,6 +184,10 @@ export default {
 
     // Custom
 
+};
+
+theme = Object.assign(theme, {
+
     // header
 
     //// logo
@@ -214,7 +221,7 @@ export default {
     },
 
     offerPrice: {
-        backgroundColor: "#1abc9c",
+        backgroundColor: theme.toolbarDefaultBg,
         alignItems: "center",
         padding: "15px"
     },
@@ -247,5 +254,16 @@ export default {
 
     //// contact
 
-    contactTextInput: {fontSize: "13px" }
-};
+    contactTextInput: { fontSize: "13px" },
+
+    // Checkout
+    checkoutHeader: {
+        backgroundColor: theme.subHeadingDefaultBg
+    },
+    checkoutHeaderText: {
+
+        color: "#fff"
+    }
+});
+
+export default theme;

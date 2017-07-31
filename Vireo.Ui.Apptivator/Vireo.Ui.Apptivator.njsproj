@@ -11,7 +11,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b62caddf-759b-44db-9cf9-efaae774709c</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>server.js</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -38,29 +39,52 @@
     <Compile Include="app\containers\HomeTab.js" />
     <Compile Include="app\containers\NewTodo.js" />
     <Compile Include="app\entry\index.js" />
-    <Compile Include="app\reducers\appContent.js" />
+    <Compile Include="app\reducers\payments.js" />
+    <Compile Include="app\reducers\appContents.js" />
     <Compile Include="app\reducers\index.js" />
     <Compile Include="app\reducers\todos.js" />
-    <Compile Include="app\reducers\__tests__\todos-test.js" />
-    <Compile Include="app\sagas\appContent.js" />
+    <Compile Include="app\sagas\payments.js" />
+    <Compile Include="app\sagas\appContents.js" />
     <Compile Include="app\sagas\index.js" />
-    <Compile Include="app\sagas\__tests__\todos-test.js" />
     <Compile Include="app\screens\index.js" />
     <Compile Include="app\screens\MainScreen.js" />
     <Compile Include="app\screens\NewTodoScreen.js" />
     <Compile Include="app\screens\PurchaseScreen.js" />
     <Compile Include="app\services\apiCall.js" />
     <Compile Include="app\services\appGenerator.js" />
+    <Compile Include="app\services\payments.js" />
     <Compile Include="app\stories\Touchable.js" />
     <Compile Include="app\stylesheets\TodoList.js" />
     <Compile Include="app\themes\banzhow.js" />
     <Compile Include="app\themes\yayoi.js" />
     <Compile Include="Content.js" />
+    <Compile Include="dist\bundle.js" />
+    <Compile Include="dist\server.js" />
     <Compile Include="index.web.js" />
-    <Compile Include="server.js" />
+    <Compile Include="server\data\collections\chargesCollection.js" />
+    <Compile Include="server\data\collections\collection.js" />
+    <Compile Include="server\data\db.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="server\data\__tests__\chargesCollectionTests.js" />
+    <Compile Include="server\data\__tests__\collectionTests.js" />
+    <Compile Include="server\data\__tests__\customersCollectionTests.js" />
+    <Compile Include="server\data\__tests__\dbClientTests.js" />
+    <Compile Include="server\entry.js" />
+    <Compile Include="server\services\paymentService.js" />
+    <Compile Include="web\.storybook\config.js" />
+    <Compile Include="web\.storybook\webpack.config.js" />
+    <Compile Include="web\showip.js" />
+    <Compile Include="web\src\vendor\stripe.js" />
+    <Compile Include="web\webpack.config.dev.js" />
+    <Compile Include="web\webpack.config.prod.js" />
+    <Content Include=".babelrc" />
     <Content Include="app\assets\react-native-web.png" />
+    <Content Include="dist\index.html" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="server\data\collections\customersCollection.js" />
+    <Content Include="web\src\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
@@ -78,8 +102,17 @@
     <Folder Include="app\stories\" />
     <Folder Include="app\stylesheets\" />
     <Folder Include="app\themes\" />
+    <Folder Include="dist\" />
     <Folder Include="server\" />
+    <Folder Include="server\data\" />
+    <Folder Include="server\data\collections\" />
+    <Folder Include="server\data\__tests__\" />
+    <Folder Include="server\services\" />
     <Folder Include="shared\" />
+    <Folder Include="web\" />
+    <Folder Include="web\.storybook\" />
+    <Folder Include="web\src\" />
+    <Folder Include="web\src\vendor\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
