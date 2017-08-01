@@ -9,16 +9,13 @@ const commonLoaders = [
     { test: /\.png$/, loader: "url-loader" },
     { test: /\.jpg$/, loader: "file-loader" },
 ];
-const serverPath = path.join(__dirname, 'src');
-
-const publicPath = "/web/src/";
 
 module.exports = [{
     name: "client-side rendering",
     devtool: 'cheap-eval-source-map',
     devServer: {
-        contentBase: "./web/src",
-        publicPath: "/web/src",
+        contentBase: "./web/src/client",
+        publicPath: "/web/src/client",
         hot: true,
         host: "localhost"
     },
@@ -43,7 +40,8 @@ module.exports = [{
         ]
     },
     output: {
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        path: path.join(__dirname, "./src/client")
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -72,9 +70,8 @@ module.exports = [{
     target: "node",
     output: {
 
-        filename: "server.js",
-        path: serverPath,
-        libraryTarget: 'commonjs'
+        filename: "./web/src/server/server.js",
+        //libraryTarget: 'commonjs'
     },
     externals: [
         /^[a-z\-0-9]+$/,
