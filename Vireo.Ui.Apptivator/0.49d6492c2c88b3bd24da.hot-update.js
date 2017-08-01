@@ -1,19 +1,30 @@
-import * as Hapi from "hapi";
-import paymentService from "./services/paymentService";
+exports.id = 0;
+exports.modules = {
+
+/***/ 3:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hapi__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hapi___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hapi__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_paymentService__ = __webpack_require__(5);
+
+
 
 const rootRoute = "/api";
 
-const server = new Hapi.Server();
+const server = new __WEBPACK_IMPORTED_MODULE_0_hapi__["Server"]();
 server.connection({ port: 3001, host: 'localhost' });
 
 server.register([{
-    register: require('hapi-cors'),
+    register: __webpack_require__(11),
     options: {
         origins: ['http://localhost:3000']
     }
 },
 {
-    register: require('overjoy-await'),
+    register: __webpack_require__(12),
     options: {
         handlerName: "await"
     }
@@ -36,7 +47,7 @@ server.route({
         async await(request, reply) {
 
             try {
-                await paymentService.makePayment(request.payload.token, request.payload.email);
+                await __WEBPACK_IMPORTED_MODULE_1__services_paymentService__["a" /* default */].makePayment(request.payload.token, request.payload.email);
             }
             catch (e) {
 
@@ -57,3 +68,7 @@ server.route({
 //        reply('Hello, ' + encodeURIComponent(request.params.name) + '!');
 //    }
 //});
+
+/***/ })
+
+};
