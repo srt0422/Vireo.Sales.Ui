@@ -22,8 +22,8 @@ module.exports = [{
         host: "localhost"
     },
     entry: [
-        //'babel-polyfill',
-        //'whatwg-fetch',
+        'babel-polyfill',
+        'whatwg-fetch',
         path.join(__dirname, '../index.web.js')
     ],
     module: {
@@ -70,7 +70,7 @@ module.exports = [{
     // The configuration for the server-side rendering
     name: "server-side rendering",
     entry: [
-        //'babel-polyfill',
+        'babel-polyfill',
         //'webpack/hot/signal.js',
         "./server/entry.js"
     ],
@@ -78,7 +78,7 @@ module.exports = [{
     output: {
 
         filename: "./web/src/server/server.js",
-        //libraryTarget: 'commonjs'
+        libraryTarget: 'commonjs' //!!! DO NOT REMOVE THIS !!! IMPORTS BREAK IN SERVER CODE WITHOUT THIS SETTING
     },
     externals: [
         /^[a-z\-0-9]+$/,
