@@ -75,9 +75,9 @@ export default class Collection {
         }
     }
 
-    connect(name) {
+    async connect(name) {
 
-        return db.connect().then(mongodb => {
+        return await db.connect().then(mongodb => {
             this.source = mongodb.collection(name);
             this.dataSource = mongodb;
         })
