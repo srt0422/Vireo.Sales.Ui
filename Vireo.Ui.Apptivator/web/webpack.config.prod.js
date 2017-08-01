@@ -38,7 +38,7 @@ module.exports = {
       'process.env.API_HOST': JSON.stringify('http://' + require('my-ip')() + ':3001/api')
     }),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin()
   ],
   resolve: {
