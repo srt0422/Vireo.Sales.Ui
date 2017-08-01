@@ -153,7 +153,7 @@ class HomeTab extends Component {
                                     ))}
 
                                     <ListItem onClick={this.props.onCallToAction} onPress={this.props.onCallToAction} style={theme.callToActionContainer} className="list-group-item">
-                                        <Button large block className="btn btn-primary ui-link">{offer.callToAction}</Button>
+                                        <Button large block className="btn btn-primary ui-link" onPress={this.props.onCallToAction} >{offer.callToAction}</Button>
                                     </ListItem>
                                 </List>
                             </View>
