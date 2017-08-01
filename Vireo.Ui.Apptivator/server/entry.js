@@ -9,7 +9,7 @@ server.connection({ port: 3001, host: 'localhost' });
 server.register([{
     register: require('hapi-cors'),
     options: {
-        origins: ['http://localhost:3000']
+        origins: ['http://localhost:3000', "http://apptivator.cloudvireo.com", "https://apptivator.cloudvireo.com", "http://www.apptivator.cloudvireo.com", "https://www.apptivator.cloudvireo.com"]
     }
 },
 {
