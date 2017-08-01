@@ -42,10 +42,10 @@ module.exports = [{
         filename: 'bundle-[hash:6].js'
     },
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production'),
-            'process.env.API_HOST': JSON.stringify('http://' + require('my-ip')() + ':3001/api')
-        }),
+        new webpack.DefinePlugin([
+            'process.env.NODE_ENV',
+            'process.env.API_HOST'
+        ]),
         new HtmlWebpackPlugin({
             filename: "index.html",
             pkg: pkg,
@@ -85,16 +85,9 @@ module.exports = [{
         ])
     },
     plugins: [
-        new webpack.DefinePlugin(
-            [
-                'process.env.NODE_ENV',
-                'process.env.API_HOST'
-            ]
-            //{
-            //    'process.env.NODE_ENV': JSON.stringify('production'),
-            //    'process.env.API_HOST': JSON.stringify('http://apptivator.azurewebsites.net/api')
-            //}
-        )
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+        })
     ],
     cache: true
 }]
