@@ -4,17 +4,15 @@
   "description": "Generates cross platform mobile apps using the vireo.ui.apptivator.template and filling it with content in Content.js.",
   "main": "index.js",
   "scripts": {
-    "server-dev": "node web/src/server/server.js",
+    "backend": "node web/src/server/server.js",
     "server-debug": "node inspect web/src/server/server.js",
     "dev": "webpack-dev-server --port 3000 --config web/webpack.config.dev.js --inline --colors --hot",
     "build-dev": "yarn run clean & webpack --config web/webpack.config.dev.js --progress  --colors --hot -w",
-    "build": "del \"dist/.\" & webpack --config web/webpack.config.prod.js --progress && xcopy \"web/src/client/.\" \"dist/.\"",
+    "build": "del \"dist/.\" & webpack --config web/webpack.config.prod.js --progress && xcopy \"web/src/client/.\" \"dist/.\" /Y",
     "clean": "del \"web\\src\\*.js\"",
-    "storybook": "start-storybook -p 9001 -c web/.storybook",
     "test": "mocha --compilers js:babel-register --require babel-polyfill --recursive app/**/__tests__/*.js server/**/__tests__/*.js",
     "test:watch": "npm test -- --watch",
-    "lint": "eslint app/**/*.js",
-    "backend": "node node_modules/node-todo-server/app.js"
+    "lint": "eslint app/**/*.js"
   },
   "keywords": [
     "react",
