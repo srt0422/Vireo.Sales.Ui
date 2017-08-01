@@ -29,6 +29,7 @@
     "exoskeleton": "^0.7.0",
     "hapi": "^16.5.0",
     "hapi-cors": "^1.0.1",
+    "html-webpack-plugin": "^2.30.1",
     "jsx-loader": "^0.13.2",
     "mongodb": "^2.2.30",
     "native-base-web": "0.0.4",

@@ -1,6 +1,8 @@
 /* eslint-disable */
 const path = require('path')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const pkg = require('../package.json');
 
 const DIRECTORY = path.join(__dirname)
 
@@ -47,6 +49,11 @@ module.exports = [{
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
             'process.env.API_HOST': JSON.stringify('http://localhost:3001/api')
+        }),
+        new HtmlWebpackPlugin({
+            filename: "index.html",
+            pkg: pkg,
+            template: path.join(__dirname, "../app/index.html")
         }),
         new webpack.optimize.OccurrenceOrderPlugin()
     ],

@@ -1,4 +1,4 @@
-(function(e, a) { for(var i in a) e[i] = a[i]; }(exports, /******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	function hotDownloadUpdateChunk(chunkId) { // eslint-disable-line no-unused-vars
 /******/ 		var chunk = require("./" + "" + chunkId + "." + hotCurrentHash + ".hot-update.js");
 /******/ 		hotAddUpdateChunk(chunk.id, chunk.modules);
@@ -20,7 +20,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b09c7dfd1c3cf051daa8"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "49d6492c2c88b3bd24da"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -759,9 +759,9 @@ class Collection {
         }
     }
 
-    connect(name) {
+    async connect(name) {
 
-        return __WEBPACK_IMPORTED_MODULE_0__db__["a" /* default */].connect().then(mongodb => {
+        return await __WEBPACK_IMPORTED_MODULE_0__db__["a" /* default */].connect().then(mongodb => {
             this.source = mongodb.collection(name);
             this.dataSource = mongodb;
         })
@@ -783,7 +783,7 @@ module.exports = __webpack_require__(3);
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("babel-polyfill");
+module.exports = babel-polyfill;
 
 /***/ }),
 /* 3 */
@@ -860,7 +860,7 @@ server.route({
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("hapi");
+module.exports = hapi;
 
 /***/ }),
 /* 5 */
@@ -907,7 +907,7 @@ const stripe = new __WEBPACK_IMPORTED_MODULE_0_stripe__["Stripe"]("sk_test_OHx1Z
 /* 6 */
 /***/ (function(module, exports) {
 
-module.exports = require("stripe");
+module.exports = stripe;
 
 /***/ }),
 /* 7 */
@@ -965,7 +965,7 @@ let db = null;
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = require("mongodb");
+module.exports = mongodb;
 
 /***/ }),
 /* 10 */
@@ -981,13 +981,13 @@ module.exports = require("mongodb");
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = require("hapi-cors");
+module.exports = hapi-cors;
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = require("overjoy-await");
+module.exports = overjoy-await;
 
 /***/ })
-/******/ ])));
+/******/ ]);
