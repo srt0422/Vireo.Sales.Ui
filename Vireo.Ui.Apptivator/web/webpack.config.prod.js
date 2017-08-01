@@ -65,7 +65,7 @@ module.exports = [{
     ],
     target: "node",
     output: {
-        filename: './dist/client/server.js'
+        filename: './dist/server/server.js'
     },
     externals: [
         /^[a-z\-0-9]+$/,
