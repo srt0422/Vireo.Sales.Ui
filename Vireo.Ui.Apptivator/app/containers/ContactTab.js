@@ -93,14 +93,15 @@ class ContactTab extends Component {
 
                     <Text style={theme.divider}></Text>
 
-                    <List>
+                    <List style={{ paddingRight: "17px" }}>
 
                         <ListItem>
 
                             <InputGroup
                                 error={this.state.emailInvalid ? true : false}
                                 success={this.state.emailValid ? true : false}
-                                borderType="rounded">
+                                borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input
                                     onChange={this.onContentChange.bind(this)}
                                     required
@@ -116,7 +117,8 @@ class ContactTab extends Component {
 
                         <ListItem>
 
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} style={{ padding: "15px" }} multiline={true} numberOfLines={2} stackedLabel name="companyInfo" label="Company Information:" placeholder="Tell us about your company" />
                             </InputGroup>
 
@@ -140,71 +142,84 @@ class ContactTab extends Component {
 
                     <Text style={theme.divider}></Text>
 
-                    <List>
+                    <List style={{ paddingRight: "17px" }}>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="companyTitle" label="Company Name:" placeholder="Shown at the top of your app" />
                             </InputGroup>
                         </ListItem>
-                        <ListItem style={{ borderBottomWidth: 0 }}>
-                            <FileInput onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="companyLogo" label="Company Logo:" placeholder="Upload your logo image" />
+                        <ListItem style={{ ...theme.contactTextInputContainer, borderBottomWidth: 0, paddingRight: "0" }}>
+                            <FileInput onChange={this.onContentChange.bind(this)} required style={{ ...theme.contactTextInput }} stackedLabel name="companyLogo" label="Company Logo:" placeholder="Upload your logo image" />
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="homeHeading" label="Business Introduction Header:" placeholder="Short and simple heading" />
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="homeContent" label="Business Introduction:" placeholder="Sell yourself in few words" />
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="offers.title" label="Product/Service Offer:" placeholder="Your product/service name" />
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.price" label="Your Price (optional):" placeholder="Product/service price" />
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.subscriptionPeriod" label="Payment frequency (optional):" placeholder="For subscriptions: monthly, yearly..." />
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="offers.descriptions[0]" label="Product/service description 1:" placeholder="1 benefit of your product" />
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[1]" label="Product/service description 2:" placeholder="(optional) another benefit" />
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[2]" label="Product/service description 3 (optional):" placeholder="(optional) another benefit" />
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[3]" label="Product/service description 4 (optional):" placeholder="(optional) another benefit" />
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={theme.contactTextInputContainer}>
                                 <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[4]" label="Product/service description 5 (optional):" placeholder="(optional) another benefit" />
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <InputGroup borderType="rounded">
+                            <InputGroup borderType="rounded"
+                                style={{ ...theme.contactTextInputContainer, paddingRight: "0px" }}>
                                 <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.callToAction" label="Call to action (optional):" placeholder="buy now!, get in touch!, etc." />
                             </InputGroup>
                         </ListItem>
-                        <ListItem>
+                        <ListItem
+                            style={{ ...theme.contactTextInputContainer, paddingRight: "0px" }}>
                             <Button large block primary onPress={this.onCreateApp.bind(this)}>Create App</Button>
                         </ListItem>
                     </List>

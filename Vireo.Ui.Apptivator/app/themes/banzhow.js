@@ -254,7 +254,12 @@ theme = Object.assign(theme, {
 
     //// contact
 
-    contactTextInput: { fontSize: "13px" },
+    contactTextInputContainer: {
+    },
+
+    contactTextInput: {
+        fontSize: "13px"
+    },
 
     // Checkout
     checkoutHeader: {
