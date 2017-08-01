@@ -23,7 +23,7 @@ module.exports = [{
     },
     entry: [
         'babel-polyfill',
-        'whatwg-fetch',
+        //'whatwg-fetch',
         path.join(__dirname, '../index.web.js')
     ],
     module: {

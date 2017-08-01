@@ -1,4 +1,4 @@
-﻿import React, { Component } from "react";
+import React, { Component } from "react";
 import { RefreshControl, Alert, Dimensions, Image } from "react-native";
 import {
     Card,
@@ -71,7 +71,7 @@ class Checkout extends Component {
                                     <CardElement />
                                 </CardItem>
                                 <CardItem>
-                                    <Button block onPress={this.submitPayment.bind(this)} onClick={this.submitPayment}>Complete Purchase</Button>
+                                    <Button large block onPress={this.submitPayment.bind(this)} onClick={this.submitPayment}>Complete Purchase</Button>
                                 </CardItem>
                                 {this.state.errorMessage ? (
                                     <CardItem>

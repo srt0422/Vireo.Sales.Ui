@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+import React, { Component } from 'react';
 import {
     Container,
     Header,
@@ -205,7 +205,7 @@ class ContactTab extends Component {
                             </InputGroup>
                         </ListItem>
                         <ListItem>
-                            <Button large onPress={this.onCreateApp.bind(this)}>Create App</Button>
+                            <Button large block primary onPress={this.onCreateApp.bind(this)}>Create App</Button>
                         </ListItem>
                     </List>
                 </Content>
