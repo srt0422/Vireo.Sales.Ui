@@ -39,7 +39,7 @@ module.exports = [{
     },
     output: {
         path: path.join(__dirname, "../dist/client/"),
-        filename: 'bundle-[hash].js'
+        filename: 'bundle-[hash:6].js'
     },
     plugins: [
         new webpack.DefinePlugin({
