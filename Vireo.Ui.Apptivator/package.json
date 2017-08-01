@@ -26,6 +26,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "color": "^0.11.3",
+    "cross-env": "^5.0.1",
     "exoskeleton": "^0.7.0",
     "hapi": "^16.5.0",
     "hapi-cors": "^1.0.1",
