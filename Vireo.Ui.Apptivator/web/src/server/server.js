@@ -1,4 +1,4 @@
-(function(e, a) { for(var i in a) e[i] = a[i]; }(exports, /******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	function hotDownloadUpdateChunk(chunkId) { // eslint-disable-line no-unused-vars
 /******/ 		var chunk = require("./" + "" + chunkId + "." + hotCurrentHash + ".hot-update.js");
 /******/ 		hotAddUpdateChunk(chunk.id, chunk.modules);
@@ -20,7 +20,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3416fe9023b13ebecbcc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "28935b40ecf5f6a5e422"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -783,7 +783,7 @@ module.exports = __webpack_require__(3);
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("babel-polyfill");
+module.exports = babel-polyfill;
 
 /***/ }),
 /* 3 */
@@ -858,7 +858,7 @@ server.route({
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("hapi");
+module.exports = hapi;
 
 /***/ }),
 /* 5 */
@@ -905,7 +905,7 @@ const stripe = new __WEBPACK_IMPORTED_MODULE_0_stripe__["Stripe"]("sk_test_OHx1Z
 /* 6 */
 /***/ (function(module, exports) {
 
-module.exports = require("stripe");
+module.exports = stripe;
 
 /***/ }),
 /* 7 */
@@ -926,7 +926,7 @@ module.exports = require("stripe");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongodb___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mongodb__);
 ﻿
 
-const url = 'mongodb://localhost:27017/apptivator';
+const url = process.env.production ? 'mongodb://40.78.96.177:27017/apptivator' : 'mongodb://localhost:27017/apptivator';
 
 let db = null;
 
@@ -963,7 +963,7 @@ let db = null;
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = require("mongodb");
+module.exports = mongodb;
 
 /***/ }),
 /* 10 */
@@ -979,13 +979,13 @@ module.exports = require("mongodb");
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = require("hapi-cors");
+module.exports = hapi-cors;
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = require("overjoy-await");
+module.exports = overjoy-await;
 
 /***/ })
-/******/ ])));
+/******/ ]);

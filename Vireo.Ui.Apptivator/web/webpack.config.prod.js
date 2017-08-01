@@ -84,5 +84,11 @@ module.exports = [{
             { test: /\.css$/, loader: "css-loader" }//path.join(__dirname, "server", "style-collector") + "!css-loader" },
         ])
     },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production'),
+            'process.env.API_HOST': JSON.stringify('http://apptivator.azurewebsites.net/api')
+        })
+    ],
     cache: true
 }]
