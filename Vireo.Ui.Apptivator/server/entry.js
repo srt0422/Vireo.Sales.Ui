@@ -4,7 +4,7 @@ import paymentService from "./services/paymentService";
 const rootRoute = "/api";
 
 const server = new Hapi.Server();
-server.connection({ port: process.env.PORT || 3001, host: 'localhost' });
+server.connection({ port: process.env.PORT || 3001, host: process.env.HOST || 'localhost' });
 
 server.register([{
     register: require('hapi-cors'),
