@@ -78,7 +78,7 @@ module.exports = [{
         filename: './dist/server/server.js'
     },
     externals: [
-        /^[a-z\-0-9]+$/,
+        ///^[a-z\-0-9]+$/,
         /^babel-runtime/
     ],
     module: {
