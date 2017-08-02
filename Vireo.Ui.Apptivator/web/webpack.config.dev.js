@@ -70,7 +70,7 @@ module.exports = [{
     // The configuration for the server-side rendering
     name: "server-side rendering",
     entry: [
-        'babel-polyfill',
+        //'babel-polyfill',
         //'webpack/hot/signal.js',
         "./server/entry.js"
     ],
