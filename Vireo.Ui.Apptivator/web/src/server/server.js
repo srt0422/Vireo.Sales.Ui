@@ -20,7 +20,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5f9d58897d3385803ff7"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "178e0b671e8544deb2b9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -805,7 +805,7 @@ server.connection({ port: 3001, host: 'localhost' });
 server.register([{
     register: __webpack_require__(11),
     options: {
-        origins: ['http://localhost:3000']
+        origins: ['http://localhost:3000', "http://apptivator.cloudvireo.com", "https://apptivator.cloudvireo.com", "http://www.apptivator.cloudvireo.com", "https://www.apptivator.cloudvireo.com"]
     }
 },
 {
@@ -926,7 +926,7 @@ module.exports = require("stripe");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongodb___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mongodb__);
 ﻿
 
-const url = process.env.production ? 'mongodb://40.78.96.177:27017/apptivator' : 'mongodb://localhost:27017/apptivator';
+const url = process.env.NODE_ENV === "production" ? 'mongodb://40.78.96.177:27017/apptivator' : 'mongodb://localhost:27017/apptivator';
 
 let db = null;
 
