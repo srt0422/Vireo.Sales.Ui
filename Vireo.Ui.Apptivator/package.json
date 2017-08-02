@@ -9,7 +9,7 @@
     "server-debug": "node inspect web/src/server/server.js",
     "dev": "webpack-dev-server --port 3000 --config web/webpack.config.dev.js --inline --colors --hot",
     "build-dev": "yarn run clean & webpack --config web/webpack.config.dev.js --progress  --colors --hot -w",
-    "build": "del /q /s \"dist/\" & del /q \"web/src/client/.\" & cross-env NODE_ENV=production API_HOST=http://apptivator.azurewebsites.net/api webpack --config web/webpack.config.prod.js --progress && xcopy \"./web/src/client/.\" \"dist/client/.\" /Y /S && xcopy \"./web/src/server/.\" \"dist/server/.\" /Y /S",
+    "build": "del /q /s \"dist/\" & del /q \"web/src/client/.\" & cross-env NODE_ENV=production API_HOST=http://apptivator.azurewebsites.net/api webpack --config web/webpack.config.prod.js --progress && xcopy \"./web/src/client/.\" \"dist/client/.\" /Y /S && xcopy \"./web/src/server/.\" \"dist/server/.\" /Y /S && xcopy \"./package.json\" \"dist/server/.\" /Y /S",
     "clean": "del \"web\\src\\*.js\"",
     "test": "mocha --compilers js:babel-register --require babel-polyfill --recursive app/**/__tests__/*.js server/**/__tests__/*.js",
     "test:watch": "npm test -- --watch",

@@ -79,7 +79,7 @@ module.exports = [{
     },
     externals: [
         ///^[a-z\-0-9]+$/,
-        /^babel-runtime/
+        ///^babel-runtime/
     ],
     module: {
         loaders: commonLoaders.concat([
