@@ -2,8 +2,12 @@
 "sourceMap": true,
   "presets": [
     "es2015",
+    "es2017",
     "stage-0",
-    "react"
+    "stage-2",
+    "react",
+    "env",
+    "node6"
   ],
   "plugins": [
     "transform-regenerator",
