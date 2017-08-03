@@ -6,17 +6,17 @@ const path = require('path'),
 
 const DIRECTORY = path.join(__dirname)
 
-const commonLoaders = [{
-    test: /\.jsx?$/,
-    exclude: /node_modules/,
-    loader: 'babel-loader',
-    query: { cacheDirectory: true }
-},
-{
-    test: /\.(gif|jpe?g|png|svg)$/,
-    loader: 'url-loader',
-    query: { name: '[name].[hash:16].[ext]' }
-}];
+const commonLoaders = [
+    {
+        test: /\.(gif|jpe?g|png|svg)$/,
+        loader: 'url-loader',
+        query: { name: '[name].[hash:16].[ext]' }
+    }, {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: { cacheDirectory: true }
+    }];
 
 module.exports = [{
     name: "client-side rendering",
@@ -69,7 +69,7 @@ module.exports = [{
     target: "node",
     output: {
         filename: './web/src/server/server.js',
-        libraryTarget: 'commonjs' 
+        libraryTarget: 'commonjs'
     },
     externals: [
         /^[a-z\-0-9]+$/,
@@ -84,8 +84,7 @@ module.exports = [{
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        new webpack.optimize.OccurrenceOrderPlugin()
-        ,
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin()
     ],
     cache: true
