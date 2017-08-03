@@ -7,7 +7,7 @@ const path = require('path'),
 const DIRECTORY = path.join(__dirname)
 
 const commonLoaders = [
-    { test: /\.jsx?$/, loader: "babel-loader", include: ["app", "server"] },
+    { test: /\.jsx?$/, loader: "babel", include: ["app", "server"] },
     { test: /\.png$/, loader: "url-loader" },
     { test: /\.jpg$/, loader: "file-loader" },
 ];
