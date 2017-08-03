@@ -4,15 +4,19 @@ import appGenerator from '../services/appGenerator';
 
 export function* setContent(action) {
     try {
+
         yield call(appGenerator.setField, action.payload);
 
         yield put({
             type: 'appContents/set/success'
         });
+
         yield put({
             type: 'appContents/get'
         });
-    } catch (err) {
+
+    }
+    catch (err) {
         // eslint-disable-next-line
         console.error(err);
         yield put({
@@ -24,11 +28,14 @@ export function* setContent(action) {
 
 export function* getContent() {
     try {
+
         const response = yield call(appGenerator.fetch);
+
         yield put({
             type: 'appContents/get/success',
-            response
+            payload: { content: response }
         });
+
     } catch (err) {
         // eslint-disable-next-line
         console.error(err);

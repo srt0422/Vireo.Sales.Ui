@@ -10,10 +10,11 @@ export function* addPayment(action) {
 
         yield put({
             type: 'payments/add/success',
-            success: true
+            payload: { success: true }
         });
 
-    } catch (err) {
+    }
+    catch (err) {
 
         yield put({
             type: 'payments/add/failed',

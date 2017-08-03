@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "description": "Generates cross platform mobile apps using the vireo.ui.apptivator.template and filling it with content in Content.js.",
   "main": "server.js",
-  "engines": { "node": "7.7.x" },
+  "engines": {
+    "node": "7.7.x"
+  },
   "scripts": {
     "start": "node server.js",
-    "backend": "node web/src/server/server.js",
+    "server-dev": "node web/src/server/server.js",
     "server-debug": "node inspect web/src/server/server.js",
     "dev": "webpack-dev-server --config web/webpack.config.dev.js --colors",
     "build-dev": "yarn run clean & webpack --config web/webpack.config.dev.js --progress  --colors --hot -w",

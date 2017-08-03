@@ -15,7 +15,8 @@ else {
 server.register([{
     register: require('hapi-cors'),
     options: {
-        origins: ['http://localhost:3000', "http://apptivator.cloudvireo.com", "https://apptivator.cloudvireo.com", "http://www.apptivator.cloudvireo.com", "https://www.apptivator.cloudvireo.com"]
+        "headers": ["Accept", "Authorization", "Content-Type", "If-None-Match", "Accept-Language", "Accept-Encoding", "Access-Control-Request-Headers", "Access-Control-Request-Method", "DNT", "Connection", "Host", "Origin", "Refferer", "User-Agent"],
+        origins: ['http://localhost:3000'],//, "http://apptivator.cloudvireo.com", "https://apptivator.cloudvireo.com", "http://www.apptivator.cloudvireo.com", "https://www.apptivator.cloudvireo.com"]
     }
 },
 {
@@ -40,10 +41,34 @@ server.route({
     method: 'POST',
     path: `${rootRoute}/appContents`,
     handler: {
+
         async await(request, reply) {
 
             try {
-                appContentsCollection.insert(request.payload);
+                await appContentsCollection.save(request.payload);
+            }
+            catch (e) {
+
+                return reply(e);
+            }
+
+            return reply().code(201);
+        }
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: `${rootRoute}/appContents`,
+    handler: {
+        async await(request, reply) {
+
+            try {
+                let appContents = await appContentsCollection.getAll();
+
+                console.log(appContents);
+
+                return reply(appContents);
             }
             catch (e) {
 
@@ -81,6 +106,7 @@ server.route({
     path: `${rootRoute}/payments`,
     handler: {
         async await(request, reply) {
+
             let charges = await chargesCollection.getAll();
 
             console.log(charges);
@@ -101,13 +127,5 @@ server.route({
 
             return reply(customers);
         }
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: `${rootRoute}/test`,
-    handler: function (request, reply) {
-        reply("test");
     }
 });

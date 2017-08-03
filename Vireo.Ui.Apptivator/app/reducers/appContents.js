@@ -12,14 +12,14 @@ const appContents = handleActions({
         return { ...state, isLoading: false, err: action.err };
     },
 
-    ['appContents/get'](state) {
+    ['appContents/get'](state, action) {
         return { ...state, isLoading: true };
     },
     ['appContents/get/success'](state, action) {
-      return {...state, isLoading: false, content: action.response};
+        return { ...state, isLoading: false, content: action.payload.content };
     },
     ['appContents/get/failed'](state, action) {
-      return {...state, isLoading: false, err: action.err};
+        return { ...state, isLoading: false, err: action.err };
     },
 
     //['todos/get'](state) {

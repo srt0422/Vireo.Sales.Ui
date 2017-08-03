@@ -1,4 +1,10 @@
-﻿const content = {};
+﻿import apiCall from "./apiCall";
+
+const content = {};
+
+export function save() {
+    return apiCall("appContents", "POST", content);
+}
 
 export function setField(field) {
     if (field.name.indexOf("[") !== -1) {
