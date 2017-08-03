@@ -68,7 +68,8 @@ module.exports = [{
     ],
     target: "node",
     output: {
-        filename: './web/src/server/server.js'
+        filename: './web/src/server/server.js',
+        libraryTarget: 'commonjs' 
     },
     externals: [
         /^[a-z\-0-9]+$/,
