@@ -1,4 +1,6 @@
-﻿import db from "../db";
+﻿import DB from "../db";
+
+let db = DB;
 
 export default class Collection {
 
@@ -10,7 +12,7 @@ export default class Collection {
 
         await this.connect(this.name);
 
-        var result = await new Promise((resolve, reject) => {
+        let result = await new Promise((resolve, reject) => {
             try {
                 this.source.insertOne(entity, this.getInsertCallback(resolve, reject));
             }
@@ -28,12 +30,38 @@ export default class Collection {
 
         await this.connect(this.name);
 
-        var result = await new Promise((resolve, reject) => {
+        let result = await new Promise((resolve, reject) => {
             try {
                 return this.source.findOne({ id: id }, this.getFetchCallback(resolve, reject));
             }
             catch (e) {
                 reject(new Error(e));
+            }
+        });
+
+        await this.dispose();
+
+        return result;
+    }
+
+    async getAll() {
+
+        await this.connect(this.name);
+
+        let result = await new Promise((resolve, reject) => {
+
+            try {
+                return this.source.find().toArray((err, results) => {
+                    if (err) {
+                        reject(new Error(err));
+                    }
+                    else {
+                        resolve(results)
+                    }
+                });
+            }
+            catch (e) {
+                reject(e);
             }
         });
 
@@ -77,10 +105,17 @@ export default class Collection {
 
     async connect(name) {
 
-        return await db.connect().then(mongodb => {
+        try {
+            let mongodb = await db.connect();
+
             this.source = mongodb.collection(name);
+
+            if (this.dataSource) {
+                this.dataSource.close();
+            }
+
             this.dataSource = mongodb;
-        })
-            .catch(e => new Error(e));
+        }
+        catch (e) { await Promise.reject(new Error(e)); }
     }
 }

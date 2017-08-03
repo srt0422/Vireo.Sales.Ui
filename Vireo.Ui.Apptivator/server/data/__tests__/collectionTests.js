@@ -1,17 +1,22 @@
 ﻿import rewire from "rewire";
 import { assert } from "chai";
 import { mock } from "sinon";
-import Collection from "../collections/collection";
 
 describe("collectionTests tests (unit)", () => {
 
+    let collectionRewired;
+    let Collection = null;
     let collection = null;
 
     beforeEach(() => {
-        collection = new Collection();
+        collectionRewired = rewire("../collections/collection");
+        Collection = collectionRewired.default;
+        collection = new Collection("test");
     });
 
     afterEach(() => {
+        collectionRewired = null;
+        Collection = null;
         collection = null;
     });
 
@@ -22,6 +27,13 @@ describe("collectionTests tests (unit)", () => {
 
             let collectionStub = { insertOne: (entity, cb) => { cb(null, { insertedId: entity.id }); } };
             collection.source = collectionStub;
+
+            collectionRewired.__set__("db", {
+                connect: () => (Promise.resolve({
+                    collection: () => collectionStub,
+                    close: () => { }
+                })),
+            });
 
             let id = await collection.save(testEntity);
 

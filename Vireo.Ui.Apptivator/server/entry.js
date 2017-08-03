@@ -1,11 +1,17 @@
 import * as Hapi from "hapi";
 import paymentService from "./services/paymentService";
+import { chargesCollection, customersCollection, appContentsCollection } from "./data/collections";
 
 const rootRoute = "/api";
 
 const server = new Hapi.Server();
-server.connection({ port: process.env.PORT || 3001, host: process.env.HOST || 'localhost' });
 
+if (process.env.PORT) {
+    server.connection({ port: process.env.PORT });
+}
+else {
+    server.connection({ port: process.env.PORT || 3001, host: process.env.HOST || 'localhost' });
+}
 server.register([{
     register: require('hapi-cors'),
     options: {
@@ -29,9 +35,29 @@ server.register([{
         });
     });
 
+
 server.route({
     method: 'POST',
-    path: `${rootRoute}/payment`,
+    path: `${rootRoute}/appContents`,
+    handler: {
+        async await(request, reply) {
+
+            try {
+                appContentsCollection.insert(request.payload);
+            }
+            catch (e) {
+
+                return reply(e);
+            }
+
+            return reply().code(201);
+        }
+    }
+});
+
+server.route({
+    method: 'POST',
+    path: `${rootRoute}/payments`,
     handler: {
         async await(request, reply) {
 
@@ -42,7 +68,7 @@ server.route({
 
                 return reply(e);
             }
-            
+
             return reply().code(201);
 
             //reply('{"test": "hello"}');
@@ -50,10 +76,38 @@ server.route({
     }
 });
 
-//server.route({
-//    method: 'GET',
-//    path: '/{name}',
-//    handler: function (request, reply) {
-//        reply('Hello, ' + encodeURIComponent(request.params.name) + '!');
-//    }
-//});
+server.route({
+    method: 'GET',
+    path: `${rootRoute}/payments`,
+    handler: {
+        async await(request, reply) {
+            let charges = await chargesCollection.getAll();
+
+            console.log(charges);
+
+            return reply(charges);
+        }
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: `${rootRoute}/customers`,
+    handler: {
+        async await(request, reply) {
+            let customers = await customersCollection.getAll();
+
+            console.log(customers);
+
+            return reply(customers);
+        }
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: `${rootRoute}/test`,
+    handler: function (request, reply) {
+        reply("test");
+    }
+});

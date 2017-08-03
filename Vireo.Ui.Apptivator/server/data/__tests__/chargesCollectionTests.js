@@ -36,4 +36,17 @@ describe("chargesCollectionTests tests (integration)", () => {
         }
 
     }).timeout(10000);
+
+    it("should get charges", async () => {
+        try {
+
+            let charges = await chargesCollection.getAll();
+
+            assert.isNotNull(charges);
+            assert.isAtLeast(charges.length, 1);
+        }
+        catch (e) {
+            await Promise.reject(new Error(e));
+        }
+    }).timeout(10000);
 });

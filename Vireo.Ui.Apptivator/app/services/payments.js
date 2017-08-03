@@ -3,6 +3,6 @@
 export default {
     create: function* (token, email) {
 
-        apiCall("payment", "POST", {token: token, email: email});
+        apiCall("payments", "POST", {token: token, email: email});
     }
 };

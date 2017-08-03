@@ -38,7 +38,7 @@ module.exports = [{
         ]
     },
     output: {
-        path: path.join(__dirname, "../dist/client/"),
+        path: path.join(__dirname, "./client/"),
         filename: 'bundle-[hash:6].js'
     },
     plugins: [
@@ -73,7 +73,7 @@ module.exports = [{
     ],
     target: "node",
     output: {
-        filename: './dist/server/server.js'
+        filename: './web/src/server/server.js'
     },
     externals: [
         ///^[a-z\-0-9]+$/,
