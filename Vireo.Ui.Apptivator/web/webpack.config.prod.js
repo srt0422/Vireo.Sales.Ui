@@ -62,7 +62,7 @@ module.exports = [{
     // The configuration for the server-side rendering
     name: "server-side rendering",
     entry: [
-        //'babel-polyfill',
+        'babel-polyfill',
         //'webpack/hot/signal.js',
         "./server/entry.js"
     ],
@@ -84,8 +84,8 @@ module.exports = [{
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
         new webpack.optimize.OccurrenceOrderPlugin()
-        //,
-        //new webpack.optimize.UglifyJsPlugin()
+        ,
+        new webpack.optimize.UglifyJsPlugin()
     ],
     cache: true
 }]
