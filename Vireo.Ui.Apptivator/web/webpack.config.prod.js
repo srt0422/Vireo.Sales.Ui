@@ -6,14 +6,20 @@ const path = require('path'),
 
 const DIRECTORY = path.join(__dirname)
 
-const commonLoaders = [
-    { test: /\.jsx?$/, loader: "babel", include: ["app", "server"] },
-    { test: /\.png$/, loader: "url-loader" },
-    { test: /\.jpg$/, loader: "file-loader" },
-];
+const commonLoaders = [{
+    test: /\.jsx?$/,
+    exclude: /node_modules/,
+    loader: 'babel-loader',
+    query: { cacheDirectory: true }
+},
+{
+    test: /\.(gif|jpe?g|png|svg)$/,
+    loader: 'url-loader',
+    query: { name: '[name].[hash:16].[ext]' }
+}];
 
 module.exports = [{
-    //devtool : 'source-map',
+    name: "client-side rendering",
     devServer: {
         contentBase: path.join(__dirname, 'src')
     },
@@ -23,19 +29,7 @@ module.exports = [{
         path.join(__dirname, '../index.web.js')
     ],
     module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: { cacheDirectory: true }
-            },
-            {
-                test: /\.(gif|jpe?g|png|svg)$/,
-                loader: 'url-loader',
-                query: { name: '[name].[hash:16].[ext]' }
-            }
-        ]
+        rules: commonLoaders
     },
     output: {
         path: path.join(__dirname, "./client/"),
@@ -63,11 +57,12 @@ module.exports = [{
             'react/lib/ReactNativePropRegistry': 'react-native-web-extended/dist/modules/ReactNativePropRegistry'
         }
     }
-}, {
+},
+{
     // The configuration for the server-side rendering
     name: "server-side rendering",
     entry: [
-        'babel-polyfill',
+        //'babel-polyfill',
         //'webpack/hot/signal.js',
         "./server/entry.js"
     ],
@@ -76,19 +71,21 @@ module.exports = [{
         filename: './web/src/server/server.js'
     },
     externals: [
-        ///^[a-z\-0-9]+$/,
-        ///^babel-runtime/
+        /^[a-z\-0-9]+$/,
+        /^babel-runtime/
     ],
     module: {
-        loaders: commonLoaders.concat([
-            { test: /\.css$/, loader: "css-loader" }//path.join(__dirname, "server", "style-collector") + "!css-loader" },
-        ])
+        loaders: commonLoaders.concat([{
+            test: /\.css$/, loader: "css-loader"
+        }])//path.join(__dirname, "server", "style-collector") + "!css-loader" },
     },
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.OccurrenceOrderPlugin()
+        //,
+        //new webpack.optimize.UglifyJsPlugin()
     ],
     cache: true
 }]
