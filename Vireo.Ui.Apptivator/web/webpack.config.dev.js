@@ -18,8 +18,14 @@ module.exports = [{
     devServer: {
         contentBase: "./web/src/client",
         publicPath: "/web/src/client",
+        host: "localhost",
+        port: 3000,
         hot: true,
-        host: "localhost"
+        inline: true,
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 500
+        }
     },
     entry: [
         'babel-polyfill',
