@@ -1,6 +1,6 @@
 ﻿import { MongoClient } from "mongodb";
 
-const url = process.env.NODE_ENV === "production" ? 'mongodb://40.78.96.177:2000/apptivator' : 'mongodb://localhost:27017/apptivator';
+const url = process.env.NODE_ENV === "production" ? 'mongodb://apptivator:5ZAmXndm3JPqYLRKFtULq5FviVbA2palr2kTlWMVqDVw9eEGBUUZCAOOzhAeJxlT0T6mhEBHxWgqH1T8lTLhNQ==@apptivator.documents.azure.com:10255/?ssl=true&replicaSet=globaldb' : 'mongodb://localhost:27017/apptivator';
 
 let db = null;
 
