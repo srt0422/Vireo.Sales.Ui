@@ -61,6 +61,8 @@
     <Compile Include="index.web.js" />
     <Compile Include="server\data\collections\chargesCollection.js" />
     <Compile Include="server\data\collections\collection.js" />
+    <Compile Include="server\data\collections\appContentsCollection.js" />
+    <Compile Include="server\data\collections\index.js" />
     <Compile Include="server\data\db.js">
       <SubType>Code</SubType>
     </Compile>
