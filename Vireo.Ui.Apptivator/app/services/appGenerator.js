@@ -2,8 +2,8 @@
 
 const content = {};
 
-export function save() {
-    return apiCall("appContents", "POST", content);
+export function* save() {
+    apiCall("appContents", "POST", content);
 }
 
 export function setField(field) {

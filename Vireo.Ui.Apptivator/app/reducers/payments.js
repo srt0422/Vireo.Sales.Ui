@@ -6,7 +6,7 @@ const payments = handleActions({
         return { ...state, isLoading: true };
     },
     ['payments/add/success'](state, action) {
-        return { ...state, isLoading: false, success: action.success };
+        return { ...state, isLoading: false, success: action.payload.success };
     },
     ['payments/add/failed'](state, action) {
         return { ...state, isLoading: false, err: action.err };

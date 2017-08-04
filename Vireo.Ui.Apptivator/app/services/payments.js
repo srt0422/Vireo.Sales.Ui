@@ -5,8 +5,9 @@ export default {
 
     create: function* (token, email) {
 
-        apiCall("payments", "POST", { token: token, email: email })
-            .then(appGenerator.save);
+        yield apiCall("payments", "POST", { token: token, email: email });
+
+        yield appGenerator.save();
     }
 
 };
