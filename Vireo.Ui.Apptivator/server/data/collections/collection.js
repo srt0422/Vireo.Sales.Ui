@@ -21,7 +21,7 @@ export default class Collection {
             }
         });
 
-        await this.dispose();
+        this.dispose();
 
         return result;
     }
@@ -39,7 +39,7 @@ export default class Collection {
             }
         });
 
-        await this.dispose();
+        this.dispose();
 
         return result;
     }
@@ -65,7 +65,7 @@ export default class Collection {
             }
         });
 
-        await this.dispose();
+        this.dispose();
 
         return result;
     }
