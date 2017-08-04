@@ -46,7 +46,7 @@ module.exports = [{
             template: path.join(__dirname, "../app/index.html")
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin()
+        //new webpack.optimize.UglifyJsPlugin()
     ],
     resolve: {
         alias: {
