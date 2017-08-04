@@ -14,6 +14,11 @@ export default class Collection {
 
         let result = await new Promise((resolve, reject) => {
             try {
+                if (!this.source) {
+                    console.log(this);
+                    this.source = this.dataSource.collection(this.name);
+                }
+
                 this.source.insertOne(entity, this.getInsertCallback(resolve, reject));
             }
             catch (e) {
@@ -32,6 +37,11 @@ export default class Collection {
 
         let result = await new Promise((resolve, reject) => {
             try {
+                if (!this.source) {
+                    console.log(this);
+                    this.source = this.dataSource.collection(this.name);
+                }
+
                 return this.source.findOne({ id: id }, this.getFetchCallback(resolve, reject));
             }
             catch (e) {
@@ -51,6 +61,10 @@ export default class Collection {
         let result = await new Promise((resolve, reject) => {
 
             try {
+                if (!this.source) {
+                    console.log(this);
+                    this.source = this.dataSource.collection(this.name);
+                }
                 return this.source.find().toArray((err, results) => {
                     if (err) {
                         reject(new Error(err));
