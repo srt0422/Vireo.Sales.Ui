@@ -20,9 +20,9 @@ const commonLoaders = [
 
 module.exports = [{
     name: "client-side rendering",
-    devServer: {
-        contentBase: path.join(__dirname, 'src')
-    },
+    //devServer: {
+    //    contentBase: path.join(__dirname, 'src')
+    //},
     entry: [
         'babel-polyfill',
         'whatwg-fetch',
@@ -32,7 +32,7 @@ module.exports = [{
         rules: commonLoaders
     },
     output: {
-        path: path.join(__dirname, "./client/"),
+        path: path.join(__dirname, "./src/client/"),
         filename: 'bundle-[hash:6].js'
     },
     plugins: [
