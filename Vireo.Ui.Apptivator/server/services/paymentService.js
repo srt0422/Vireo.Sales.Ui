@@ -14,7 +14,7 @@ export default {
                 source: token,
             });
 
-            customerRepository.save(customer);
+            await customerRepository.save(customer);
 
             let charge = await stripe.charges.create({
                 amount: 100,
@@ -22,7 +22,7 @@ export default {
                 customer: customer.id,
             });
 
-            chargesCollection.save(charge);
+            await chargesCollection.save(charge);
         }
         catch (e) {
             throw e;
