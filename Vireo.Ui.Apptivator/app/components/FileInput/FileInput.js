@@ -61,15 +61,15 @@ export default class FileInput extends Component {
                     <span style={{ verticalAlign: "middle", height: '100%', display: 'inline-block' }}></span>
                 </label>
                 <View style={inputContainerStyle}>
-                    <input style={style}
-                        id={this.props.id}
-                        onChange={this.props.onContentChange ? (e) => {
+                    <input {...this.props}
+                         style={style}
+                        onChange={this.props.onChange ? (e) => {
 
                             var fr = new FileReader();
 
                             fr.onload = (f: any) => {
 
-                                this.props.onChange({ value: f.target.result.split(',')[1], fileName: e.target.files.item(0).name });
+                                this.props.onChange({ target: { name: e.target.name, value: { data: f.target.result.split(',')[1], fileName: e.target.files.item(0).name } } });
                             }
 
                             fr.readAsDataURL(e.target.files.item(0));
