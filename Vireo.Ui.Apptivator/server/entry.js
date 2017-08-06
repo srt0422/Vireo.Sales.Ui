@@ -169,7 +169,7 @@ server.route({
     handler: function (request, reply) {
 
         const { from, email, message } = request.payload;
-        
+
         server.render("email", { message }, function (err, rendered, config) {
 
             if (err) {
@@ -185,6 +185,37 @@ server.route({
 
             server.methods.sendEmail(emailOptions, (err, response) => {
                 debugger;
+                if (err) {
+                    reply(err);
+                }
+
+                reply();
+            });
+
+        });
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: `${rootRoute}/email`,
+    handler: function (request, reply) {
+
+        server.render("email", { message: "test contact message" }, function (err, rendered, config) {
+
+            if (err) {
+                reply(err);
+            }
+
+            const emailOptions = {
+                from: "info@cloudvireo.com",
+                to: "srt0422@gmail.com",
+                subject: 'Mobile App Contact',
+                html: rendered
+            };
+
+            server.methods.sendEmail(emailOptions, (err, response) => {
+
                 if (err) {
                     reply(err);
                 }
