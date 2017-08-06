@@ -1,0 +1,5 @@
+yarn server-dev v0.22.0
+$ node web/src/server/server.js web/src/server
+/
+Server running at: http://localhost:3001
+Terminate batch job (Y/N)? 

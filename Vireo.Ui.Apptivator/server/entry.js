@@ -1,6 +1,7 @@
 import * as Hapi from "hapi";
 import paymentService from "./services/paymentService";
 import { chargesCollection, customersCollection, appContentsCollection } from "./data/collections";
+import nodemailer from "nodemailer";
 
 const rootRoute = "/api";
 
@@ -12,11 +13,15 @@ if (process.env.PORT) {
 else {
     server.connection({ port: process.env.PORT || 3001, host: process.env.HOST || 'localhost' });
 }
+
 server.register([{
+    register: require("vision")
+},
+{
     register: require('hapi-cors'),
     options: {
         "headers": ["Accept", "Authorization", "Content-Type", "If-None-Match", "Accept-Language", "Accept-Encoding", "Access-Control-Request-Headers", "Access-Control-Request-Method", "DNT", "Connection", "Host", "Origin", "Refferer", "User-Agent"],
-        origins: ['http://localhost:3000'],//, "http://apptivator.cloudvireo.com", "https://apptivator.cloudvireo.com", "http://www.apptivator.cloudvireo.com", "https://www.apptivator.cloudvireo.com"]
+        origins: ['http://localhost:3002'] //, "http://apptivator.cloudvireo.com", "https://apptivator.cloudvireo.com", "http://www.apptivator.cloudvireo.com", "https://www.apptivator.cloudvireo.com"]
     }
 },
 {
@@ -24,14 +29,37 @@ server.register([{
     options: {
         handlerName: "await"
     }
+},
+{
+    register: require('hapi-email-plugin'),
+    options: {
+        transporter: nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            secureConnection: true,
+            port: 465,
+            auth: {
+                user: 'vireo.development@gmail.com',
+                pass: 'elacxcepehrpordh'
+            },
+            tls: {
+                secureProtocol: "TLSv1_method"
+            }
+        })
+    }
 }],
     (err) => {
+        server.views({
+            engines: { html: require("handlebars") },
+            path: "views"
+        });
+
         server.start((err) => {
 
             if (err) {
                 throw err;
             }
 
+            console.log(__dirname);
             console.log(`Server running at: ${server.info.uri}`);
         });
     });
@@ -127,5 +155,43 @@ server.route({
 
             return reply(customers);
         }
+    }
+});
+const { lstatSync, readdirSync } = require('fs')
+const { join } = require('path')
+
+const isDirectory = source => lstatSync(source).isDirectory()
+const getDirectories = source => readdirSync(source).map(name => join(source, name)).filter(isDirectory)
+
+server.route({
+    method: 'POST',
+    path: `${rootRoute}/email`,
+    handler: function (request, reply) {
+
+        const { from, email, message } = request.payload;
+        
+        server.render("email", { message }, function (err, rendered, config) {
+
+            if (err) {
+                reply(err);
+            }
+
+            const emailOptions = {
+                from: from,
+                to: email,
+                subject: 'Mobile App Contact',
+                html: rendered
+            };
+
+            server.methods.sendEmail(emailOptions, (err, response) => {
+                debugger;
+                if (err) {
+                    reply(err);
+                }
+
+                reply();
+            });
+
+        });
     }
 });

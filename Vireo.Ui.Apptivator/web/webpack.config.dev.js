@@ -1,6 +1,6 @@
 /* eslint-disable */
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pkg = require('../package.json');
 
@@ -59,7 +59,7 @@ module.exports = [{
         new HtmlWebpackPlugin({
             filename: "index.html",
             pkg: pkg,
-            template: path.join(__dirname, "../app/index.html")
+            template: path.join(__dirname, "./src/client/index.template.html")
         }),
         new webpack.optimize.OccurrenceOrderPlugin()
     ],

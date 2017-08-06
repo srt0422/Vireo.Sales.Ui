@@ -8,12 +8,11 @@
   },
   "scripts": {
     "start": "node server.js",
-    "server-dev": "node web/src/server/server.js",
+    "server-dev": " cd web/src/server & node --inspect server.js",
     "server-debug": "node inspect web/src/server/server.js",
     "dev": "webpack-dev-server --config web/webpack.config.dev.js --colors",
-    "build-dev": "yarn run clean & webpack --config web/webpack.config.dev.js --progress  --colors --hot -w",
-    "build": "del /q /s \"dist/\" & del /q \"web/src/client/.\" & cross-env NODE_ENV=production API_HOST=http://apptivator.azurewebsites.net/api webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
-    "clean": "del \"web\\src\\*.js\"",
+    "build-dev": "webpack --config web/webpack.config.dev.js --progress  --colors --hot -w",
+    "build": "del /q /s \"dist/\" & cross-env NODE_ENV=production API_HOST=http://apptivator.azurewebsites.net/api webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
     "test": "mocha --compilers js:babel-register --require babel-polyfill --recursive app/**/__tests__/*.js server/**/__tests__/*.js",
     "test:watch": "npm test -- --watch",
     "lint": "eslint app/**/*.js"
@@ -33,8 +32,10 @@
     "color": "^0.11.3",
     "cross-env": "^5.0.1",
     "exoskeleton": "^0.7.0",
+    "handlebars": "^4.0.10",
     "hapi": "^16.5.0",
     "hapi-cors": "^1.0.1",
+    "hapi-email-plugin": "^0.0.1",
     "hexo-server": "^0.2.2",
     "html-webpack-plugin": "^2.30.1",
     "jsx-loader": "^0.13.2",
@@ -54,6 +55,7 @@
     "sinon": "^2.4.1",
     "stripe": "^4.23.1",
     "then-yield": "^0.0.1",
+    "vision": "^4.1.1",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {

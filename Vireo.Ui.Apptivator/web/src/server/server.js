@@ -20,7 +20,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b1e9c2b81d4f16e1a210"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b376b1e51d0f77d37eb1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -853,10 +853,13 @@ module.exports = __webpack_require__(4);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hapi__ = __webpack_require__(5);
+/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hapi__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hapi___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hapi__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_paymentService__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_collections__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nodemailer__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nodemailer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_nodemailer__);
+
 
 
 
@@ -871,26 +874,53 @@ if (process.env.PORT) {
 else {
     server.connection({ port: process.env.PORT || 3001, host: process.env.HOST || 'localhost' });
 }
+
 server.register([{
-    register: __webpack_require__(12),
+    register: __webpack_require__(13)
+},
+{
+    register: __webpack_require__(14),
     options: {
         "headers": ["Accept", "Authorization", "Content-Type", "If-None-Match", "Accept-Language", "Accept-Encoding", "Access-Control-Request-Headers", "Access-Control-Request-Method", "DNT", "Connection", "Host", "Origin", "Refferer", "User-Agent"],
-        origins: ['http://localhost:3000'],//, "http://apptivator.cloudvireo.com", "https://apptivator.cloudvireo.com", "http://www.apptivator.cloudvireo.com", "https://www.apptivator.cloudvireo.com"]
+        origins: ['http://localhost:3002'] //, "http://apptivator.cloudvireo.com", "https://apptivator.cloudvireo.com", "http://www.apptivator.cloudvireo.com", "https://www.apptivator.cloudvireo.com"]
     }
 },
 {
-    register: __webpack_require__(13),
+    register: __webpack_require__(15),
     options: {
         handlerName: "await"
     }
+},
+{
+    register: __webpack_require__(16),
+    options: {
+        transporter: __WEBPACK_IMPORTED_MODULE_3_nodemailer___default.a.createTransport({
+            host: 'smtp.gmail.com',
+            secureConnection: true,
+            port: 465,
+            auth: {
+                user: 'vireo.development@gmail.com',
+                pass: 'elacxcepehrpordh'
+            },
+            tls: {
+                secureProtocol: "TLSv1_method"
+            }
+        })
+    }
 }],
     (err) => {
+        server.views({
+            engines: { html: __webpack_require__(17) },
+            path: "views"
+        });
+
         server.start((err) => {
 
             if (err) {
                 throw err;
             }
 
+            console.log(__dirname);
             console.log(`Server running at: ${server.info.uri}`);
         });
     });
@@ -988,7 +1018,46 @@ server.route({
         }
     }
 });
+const { lstatSync, readdirSync } = __webpack_require__(18)
+const { join } = __webpack_require__(19)
 
+const isDirectory = source => lstatSync(source).isDirectory()
+const getDirectories = source => readdirSync(source).map(name => join(source, name)).filter(isDirectory)
+
+server.route({
+    method: 'POST',
+    path: `${rootRoute}/email`,
+    handler: function (request, reply) {
+
+        const { from, email, message } = request.payload;
+        
+        server.render("email", { message }, function (err, rendered, config) {
+
+            if (err) {
+                reply(err);
+            }
+
+            const emailOptions = {
+                from: from,
+                to: email,
+                subject: 'Mobile App Contact',
+                html: rendered
+            };
+
+            server.methods.sendEmail(emailOptions, (err, response) => {
+                debugger;
+                if (err) {
+                    reply(err);
+                }
+
+                reply();
+            });
+
+        });
+    }
+});
+
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, "/"))
 
 /***/ }),
 /* 5 */
@@ -1120,13 +1189,49 @@ module.exports = require("mongodb");
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = require("hapi-cors");
+module.exports = require("nodemailer");
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports) {
 
+module.exports = require("vision");
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+module.exports = require("hapi-cors");
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
 module.exports = require("overjoy-await");
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = require("hapi-email-plugin");
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("handlebars");
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
 
 /***/ })
 /******/ ])));
