@@ -31,6 +31,9 @@
   <ItemGroup>
     <Compile Include="app\components\FileInput\FileInput.js" />
     <Compile Include="app\components\FileInput\index.js" />
+    <Compile Include="app\components\Link\index.js" />
+    <Compile Include="app\components\Link\Link.js" />
+    <Compile Include="app\components\Link\Link.web.js" />
     <Compile Include="app\components\TodoForm.js" />
     <Compile Include="app\components\TodoList.js" />
     <Compile Include="app\components\Touchable.js" />
@@ -79,7 +82,7 @@
     <Compile Include="web\webpack.config.prod.js" />
     <Content Include=".babelrc" />
     <Content Include="app\assets\react-native-web.png" />
-    <Content Include="app\index.html" />
+    <Content Include="web\src\client\index.template.html" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="server\data\collections\customersCollection.js" />
@@ -89,6 +92,7 @@
     <Folder Include="app\assets\" />
     <Folder Include="app\components\" />
     <Folder Include="app\components\FileInput\" />
+    <Folder Include="app\components\Link\" />
     <Folder Include="app\containers\" />
     <Folder Include="app\entry\" />
     <Folder Include="app\reducers\" />
