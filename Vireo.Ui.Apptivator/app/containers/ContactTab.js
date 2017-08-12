@@ -12,7 +12,8 @@ import {
     ListItem,
     Content,
     Card,
-    CardItem
+    CardItem,
+    CheckBox
 } from 'native-base';
 
 import { Text, RefreshControl, Image, Dimensions, Alert, Linking } from 'react-native';
@@ -22,8 +23,8 @@ import theme from '../themes/banzhow';
 import Contents from "../../Content";
 import Link from "../components/Link";
 
-import PrivacyPolicy from "./PrivacyPolicy";
-import TermsOfService from "./TermsOfService";
+import PrivacyPolicy from "../screens/PrivacyPolicy";
+import TermsOfService from "../screens/TermsOfService";
 
 class ContactTab extends Component {
 
@@ -32,19 +33,23 @@ class ContactTab extends Component {
         super();
 
         this.state = {
+            logoValid: false,
+            logoInvalid: false,
             emailInvalid: false,
             emailValid: false,
             showPrivacyPolicy: false,
-            showTerms: false
+            showTerms: false,
+            optIn: true
         };
     }
 
     render() {
+        console.log(this.props);
         if (this.state.showPrivacyPolicy) {
-            return <PrivacyPolicy onBackButtonPress={() => this.setState({ showPrivacyPolicy: false })} />
+            return (<PrivacyPolicy onBackButtonPress={() => this.setState({ showPrivacyPolicy: false })} />);
         }
         else if (this.state.showTerms) {
-            return <TermsOfService onBackButtonPress={() => this.setState({ showTerms: false })} />
+            return (<TermsOfService onBackButtonPress={() => this.setState({ showTerms: false })} />);
         }
         else {
             return (
@@ -123,7 +128,9 @@ class ContactTab extends Component {
                                         stackedLabel
                                         name="email"
                                         label="Email:"
-                                        placeholder="Your email address" />
+                                        placeholder="Your email address"
+                                        value={this.props.content.email}
+                                    />
                                 </InputGroup>
 
                             </ListItem>
@@ -132,7 +139,7 @@ class ContactTab extends Component {
 
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} style={{ padding: "15px" }} multiline={true} numberOfLines={2} stackedLabel name="companyInfo" label="Company Information:" placeholder="Tell us about your company" />
+                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} style={{ padding: "15px" }} multiline={true} numberOfLines={2} stackedLabel name="companyInfo" value={this.props.content.companyInfo} label="Company Information:" placeholder="Tell us about your company" />
                                 </InputGroup>
 
                             </ListItem>
@@ -159,89 +166,114 @@ class ContactTab extends Component {
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="companyTitle" label="Company Name:" placeholder="Shown at the top of your app" />
+                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="companyTitle" value={this.props.content.companyTitle} label="Company Name:" placeholder="Shown at the top of your app" />
                                 </InputGroup>
                             </ListItem>
                             <ListItem style={{ ...theme.contactTextInputContainer, borderBottomWidth: 0, paddingRight: "0" }}>
-                                <FileInput onChange={this.onContentChange.bind(this)} required style={{ ...theme.contactTextInput }} stackedLabel name="companyLogo" label="Company Logo:" placeholder="Upload your logo image" />
+                                <FileInput
+                                    error={this.state.logoInvalid ? true : false}
+                                    success={this.state.logoValid ? true : false}
+                                    onChange={this.onContentChange.bind(this)} required style={{ ...theme.contactTextInput }} stackedLabel name="companyLogo" label="Company Logo:" placeholder="Upload your logo image" />
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="homeHeading" label="Business Introduction Header:" placeholder="Short and simple heading" />
+                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="homeHeading" value={this.props.content.homeHeading} label="Business Introduction Header:" placeholder="Short and simple heading" />
                                 </InputGroup>
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="homeContent" label="Business Introduction:" placeholder="Sell yourself in few words" />
+                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="homeContent" value={this.props.content.homeContent} label="Business Introduction:" placeholder="Sell yourself in few words" />
                                 </InputGroup>
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="offers.title" label="Product/Service Offer:" placeholder="Your product/service name" />
+                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="offers.title" value={this.props.content.offers ? this.props.content.offers.title : ""} label="Product/Service Offer:" placeholder="Your product/service name" />
                                 </InputGroup>
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.price" label="Your Price (optional):" placeholder="Product/service price" />
+                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.price" value={this.props.content.offers ? this.props.content.offers.price : ""} label="Your Price (optional):" placeholder="Product/service price" />
                                 </InputGroup>
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.subscriptionPeriod" label="Payment frequency (optional):" placeholder="For subscriptions: monthly, yearly..." />
+                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.subscriptionPeriod" value={this.props.content.offers ? this.props.content.offers.subscriptionPeriod : ""} label="Payment frequency (optional):" placeholder="For subscriptions: monthly, yearly..." />
                                 </InputGroup>
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="offers.descriptions[0]" label="Product/service description 1:" placeholder="1 benefit of your product" />
+                                    <Input onChange={this.onContentChange.bind(this)} required style={theme.contactTextInput} stackedLabel name="offers.descriptions[0]" value={this.getDescription(0)} label="Product/service description 1:" placeholder="1 benefit of your product" />
                                 </InputGroup>
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[1]" label="Product/service description 2:" placeholder="(optional) another benefit" />
+                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[1]" value={this.getDescription(1)} label="Product/service description 2:" placeholder="(optional) another benefit" />
                                 </InputGroup>
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[2]" label="Product/service description 3 (optional):" placeholder="(optional) another benefit" />
+                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[2]" value={this.getDescription(2)} label="Product/service description 3 (optional):" placeholder="(optional) another benefit" />
                                 </InputGroup>
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[3]" label="Product/service description 4 (optional):" placeholder="(optional) another benefit" />
+                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[3]" value={this.getDescription(3)} label="Product/service description 4 (optional):" placeholder="(optional) another benefit" />
                                 </InputGroup>
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={theme.contactTextInputContainer}>
-                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[4]" label="Product/service description 5 (optional):" placeholder="(optional) another benefit" />
+                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.descriptions[4]" value={this.getDescription(4)} label="Product/service description 5 (optional):" placeholder="(optional) another benefit" />
                                 </InputGroup>
                             </ListItem>
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={{ ...theme.contactTextInputContainer, paddingRight: "0px" }}>
-                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.callToAction" label="Call to action (optional):" placeholder="buy now!, get in touch!, etc." />
+                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.callToAction" value={this.props.content.offers ? this.props.content.offers.callToAction : ""} label="Call to action (optional):" placeholder="buy now!, get in touch!, etc." />
                                 </InputGroup>
+                            </ListItem>
+                            <ListItem style={{cursor: "pointer"}} onPress={() => this.setState({ optIn: !this.state.optIn })}>
+                                <CheckBox name="optedIntoFollowUp" checked={this.state.optIn} />
+                                <Text>Please contact me occasionally to help me profit as much as possible from my app. (updates about products and services, and promotional discounts)</Text>
                             </ListItem>
                             <ListItem
                                 style={{ ...theme.contactTextInputContainer, paddingRight: "0px" }}>
-                                <Button large block primary onPress={this.onCreateApp.bind(this)}>Create App</Button>
                                 <View>
-                                    <Text>By clicking "Create App" you aggree to our <Link href={this.props.PrivacyPolicyUrl}>Privacy Policy</Link> & <Link href={this.props.TermsOfServiceUrl}>Terms of Service</Link></Text>
+                                    <Button large block primary onPress={this.onCreateApp.bind(this)}>Create App</Button>
+                                    <Text style={{ paddingVertical: "10px" }}>By clicking "Create App" you aggree to our <Link href="#" onClick={(e) => {
+                                        e.preventDefault();
+                                        this.setState({ showPrivacyPolicy: true });
+                                    }
+                                    }>Privacy Policy</Link> & <Link href="#" onClick={(e) => {
+                                        e.preventDefault();
+                                        this.setState({ showTerms: true });
+                                    }
+                                    }>Terms of Service</Link></Text>
                                 </View>
                             </ListItem>
                         </List>
                     </Content>
                 </Container >
             );
+        }
+    }
+
+    getDescription(index) {
+
+        try {
+            return this.props.content.offers.descriptions[index];
+        }
+        catch (e) {
+            return "";
         }
     }
 
@@ -262,14 +294,22 @@ class ContactTab extends Component {
 
         var emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
-        if (emailRegex.exec(this.props.content.email)) {
-            this.props.onSubmit();
-        }
-        else {
+        if (!emailRegex.exec(this.props.content.email)) {
 
             Alert.alert('Ivalid Email', 'Please input a valid email to move forward.  Thank you!');
 
             this.setState({ emailInvalid: true });
+        }
+
+        if (this.props.content.companyLogo == null || this.props.content.companyLogo == "") {
+
+            Alert.alert('Ivalid Logo', 'Please add a valid logo to move forward.  Thank you!');
+
+            this.setState({ logoInvalid: true });
+        }
+        else {
+
+            this.props.onSubmit();
         }
     }
 }

@@ -1,24 +1,43 @@
-﻿
-import { Text } from "react-native";
-import { View, H1, H2, H3 } from "native-base";
+﻿import * as React from "react";
+import { Text, Dimensions, Image, RefreshControl } from "react-native";
+import { View, H1, H2, H3, Button, Container, Header, Content, Title } from "native-base";
+import theme from "../themes/banzhow";
+import Contents from "../../Content";
 
 export default (props) => (
-    <View>
-        <View>
-            <Button primary onPress={this.props.onBackButtonPress}><Text>Back</Text></Button>
-        </View>
-        <View>
-            <Text>By using the apptivator.cloudvireo.com web site ("Service"), all services of Bizness Apps, Inc. ("Bizness Apps"), you are agreeing to be bound by the following terms and conditions ("Terms of Service").</Text>
-        </View>
-        <View>
-            <Text>Bizness Apps reserves the right to update and change the Terms of Service from time to time without notice. Any new features that augment or enhance the current Service, including the release of new tools and resources, are subject to the Terms of Service. Continued use of the Service after any such changes shall constitute your consent to such changes. You can review the most current version of the Terms of Service at any time at: https://www.apptivator.cloudvireo.com/terms-service/.</Text>
-        </View>
-        <View>
-            <Text>Violation of any of the terms below will result in the termination of your Account. While Bizness Apps prohibits such conduct and Content on the Service, you understand and agree that Bizness Apps cannot be responsible for the Content posted on the Service and you nonetheless may be exposed to such materials. You agree to use the Service at your own risk.</Text>
-        </View>
-        <H1>Account Terms</H1>
-        <View>
-            <Text>You must be 13 years or older to use this Service.
+    <Container style={{ height: Dimensions.get("window").height - 50 }} theme={theme}>
+        <Header>
+            <Button transparent>
+                <Image source={Contents.companyLogoUrl}
+                    style={{
+                        width: "50px",
+                        height: "50px",
+                        marginTop: "-12px"
+                    }} />
+            </Button>
+            <Title>{Contents.comanyTitle}</Title>
+            {/*<Button transparent onPress={this.handleNewBtnPress.bind(this)}>
+            <Icon name="md-add" />
+          </Button>*/}
+        </Header>
+        <Content refreshControl={
+            <RefreshControl
+                refreshing={false}
+                onRefresh={() => { }}
+            />}
+            style={theme.contentContainer} >
+            <View style={{ padding: "50px", lineHeight: "36px" }}>
+                <View>
+                    <Button small primary onPress={props.onBackButtonPress}><Text style={{ lineHeight: 1, color: "#fff" }}>Back</Text></Button>
+                </View>
+                <View style={{paddingVertical: "25px"}}>
+                    <Text>By using the apptivator.cloudvireo.com web site ("Service"), all services of Bizness Apps, Inc. ("Bizness Apps"), you are agreeing to be bound by the following terms and conditions ("Terms of Service").</Text>
+                    <Text>Bizness Apps reserves the right to update and change the Terms of Service from time to time without notice. Any new features that augment or enhance the current Service, including the release of new tools and resources, are subject to the Terms of Service. Continued use of the Service after any such changes shall constitute your consent to such changes. You can review the most current version of the Terms of Service at any time at: https://www.apptivator.cloudvireo.com/terms-service/.</Text>
+                    <Text>Violation of any of the terms below will result in the termination of your Account. While Bizness Apps prohibits such conduct and Content on the Service, you understand and agree that Bizness Apps cannot be responsible for the Content posted on the Service and you nonetheless may be exposed to such materials. You agree to use the Service at your own risk.</Text>
+                </View>
+                <H1>Account Terms</H1>
+                <View style={{ paddingVertical: "25px" }}>
+                    <Text>You must be 13 years or older to use this Service.
 
 You must be a human. Accounts registered by "bots" or other automated methods are not permitted.
 
@@ -31,20 +50,20 @@ You are responsible for all Content posted and activity that occurs under your a
 You may not use the Service for any illegal or unauthorized purpose. You must not, in the use of the Service, violate any laws in your jurisdiction (including but not limited to copyright laws).
 
 You must provide a privacy policy on your mobile application to inform your end users and visitors of the privacy practices of your mobile application. You may supply your own; provided, however, if you do not, Bizness Apps reserves the right to supply one for your or terminate your account and its services to you, in its sole discretion.</Text>
-        </View>
-        <H1>Payments and Refund Terms</H1>
-        <View>
-            <Text>A valid credit card is required.
+                </View>
+                <H1>Payments and Refund Terms</H1>
+                <View style={{ paddingVertical: "25px" }}>
+                    <Text>A valid credit card is required.
 
 There will be no refunds or credits for setup fees, partial months of service, upgrade/downgrade refunds, or refunds for months unused with an open account. In order to treat everyone equally, no exceptions will be made.
 
 All fees are exclusive of all taxes, levies, or duties imposed by taxing authorities, and you shall be responsible for payment of all such taxes, levies, or duties, excluding only United States (federal or state) taxes.
 
 Bizness Apps will use commercially reasonable efforts to have the application approved by the appropriate mobile platform provider. Although there is a high likelihood of approval, we do not and cannot guarantee acceptance. If your application is denied by the appropriate mobile platform provider you may cancel your account, however there are no refunds under any circumstances.</Text>
-        </View>
-        <H1>Cancelation and Termination</H1>
-        <View>
-            <Text>Term. This Agreement will be in effect from the time that the Service(s) are activated until (1) it is terminated as provided for by this Agreement or by any addendum to this Agreement or (2) it is replaced by a revised Agreement.
+                </View>
+                <H1>Cancelation and Termination</H1>
+                <View style={{ paddingVertical: "25px" }}>
+                    <Text>Term. This Agreement will be in effect from the time that the Service(s) are activated until (1) it is terminated as provided for by this Agreement or by any addendum to this Agreement or (2) it is replaced by a revised Agreement.
 
 Cancellation. You must cancel your subscription before your monthly renewal date and prior to debiting of funds to Bizness Apps in order to avoid the next billing (each Monthly Period). We will bill the monthly subscription fee plus any applicable taxes to the Payment Method you provide to us during registration (or to a different Payment Method if you change your account information). WE DO NOT PROVIDE REFUNDS OR CREDITS FOR ANY PARTIAL-MONTH SERVICE PERIODS. Bizness Apps shall not refund to You any fees paid in advance of such cancellation and You shall be obligated to pay all fees and charges accrued prior to the effectiveness of such cancellation; further, You shall be obligated to pay 100% of all charges for all Services remaining in the Term
 
@@ -53,18 +72,18 @@ Cancellation. To cancel, go to the "Dashboard" on our website and follow the ins
 Your Obligations Upon Cancellation. Once an email is sent to info@cloudvireo.com regarding cancelling your services, a Bizness Apps representative will reach out to you for a close out interview within 48 hours. This exit interview is mandatory to cancelling your services and Bizness Apps will continue to bill your account if your exit interview does not occur within two (2) weeks.
 
 Bizness Apps reserves the right to refuse service to anyone for any reason at any time.</Text>
-        </View>
-        <H1>Modifications to the Service and Prices</H1>
-        <View>
-            <Text>Bizness Apps reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Service (or any part thereof) with or without notice.
+                </View>
+                <H1>Modifications to the Service and Prices</H1>
+                <View style={{ paddingVertical: "25px" }}>
+                    <Text>Bizness Apps reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, the Service (or any part thereof) with or without notice.
 
 Bizness Apps shall not be liable to you or to any third party for any modification, price change, suspension or discontinuance of the Service.
 
 From time to time, Bizness Apps may issue an update to the Bizness Apps application which may add, modify, and/or remove features from the application. These updates may be pushed out automatically with little or no notice, although Bizness Apps will do everything in its power to notify you in advance of an upcoming update, including details on what the update includes.</Text>
-        </View>
-        <H1>Copyright and Content Ownership</H1>
-        <View>
-            <Text>We claim no intellectual property rights over the material you provide to the Service. Your profile and materials uploaded remain yours. However, by using the Bizness Apps application to create your mobile application, you agree to allow others to view and share your Content.
+                </View>
+                <H1>Copyright and Content Ownership</H1>
+                <View style={{ paddingVertical: "25px" }}>
+                    <Text>We claim no intellectual property rights over the material you provide to the Service. Your profile and materials uploaded remain yours. However, by using the Bizness Apps application to create your mobile application, you agree to allow others to view and share your Content.
 
 Bizness Apps does not pre-screen Content, but Bizness Apps and its designee have the right (but not the obligation) in their sole discretion to refuse or remove any Content that is available via the Service.
 
@@ -77,10 +96,10 @@ You grant Bizness Apps a license to use the materials you post to the Services. 
 When accessing or using the Services, you agree to obey the law and to respect the intellectual property rights of others. Your use of the Services is at all times governed by and subject to laws regarding copyright, trademark, patent, and trade secret ownership and use of intellectual property. You agree not to upload, download, display, perform, transmit, or otherwise distribute any information or content in violation of any party’s copyrights, trademarks, patents, trade secrets, or other intellectual property or proprietary rights. You agree to abide by laws regarding copyright, trademark, patent, and trade secret ownership and use of intellectual property, and you shall be solely responsible for any violations of any laws and for any infringements of any intellectual property rights caused by any content you provide, post, or transmit, or that is provided or transmitted using your user name or user ID. The burden of proving that any Content does not violate any laws or intellectual property rights rests solely with you.
 
 All Bizness Apps content included on its site, its Software, and through the Service is the property of Bizness Apps and is protected by U.S. and international intellectual property laws. All Bizness Apps content, Software, code, HTML/CSS, and visual design data is is copyright 2017 Bizness Apps, Inc.</Text>
-        </View>
-        <H1>General Conditions</H1>
-        <View>
-            <Text>Your use of the Service is at your sole risk. The service is provided on an "as is" and "as available" basis.
+                </View>
+                <H1>General Conditions</H1>
+                <View style={{ paddingVertical: "25px" }}>
+                    <Text>Your use of the Service is at your sole risk. The service is provided on an "as is" and "as available" basis.
 
 Technical support is only available via email and phone. The technical support email address is info@cloudvireo.com. Our live phone support hours are available 6am - 6pm PST, Monday through Friday, which can be reached by dialing 1-800-549-8138. Email support is available 24/7.
 
@@ -113,7 +132,11 @@ In no event shall Bizness Apps liability to you exceed the amount actually paid 
 Any exclusions of liability contained herein are not applicable to residents of New Jersey. With respect to residents of New Jersey, Bizness Apps shall not be liable for any damages resulting from the use of this Site or Services unless such damages are the result of our negligent or reckless acts or omissions.
 
 SOME STATES AND/OR JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF DIRECT, INDIRECT, INCIDENTAL, SPECIAL AND/OR CONSEQUENTIAL DAMAGES, SO THE ABOVE EXCLUSION MAY NOT APPLY TO YOU.</Text>
-        </View>
-
-    </View >
+                </View>
+                <View>
+                    <Button small primary onPress={props.onBackButtonPress}><Text style={{ lineHeight: 1, color: "#fff" }}>Back</Text></Button>
+                </View>
+            </View>
+        </Content>
+    </Container>
 );
