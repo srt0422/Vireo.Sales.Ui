@@ -241,7 +241,7 @@ class ContactTab extends Component {
                                     <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.callToAction" value={this.props.content.offers ? this.props.content.offers.callToAction : ""} label="Call to action (optional):" placeholder="buy now!, get in touch!, etc." />
                                 </InputGroup>
                             </ListItem>
-                            <ListItem style={{cursor: "pointer"}} onPress={() => this.setState({ optIn: !this.state.optIn })}>
+                            <ListItem style={{ cursor: "pointer" }} onPress={() => this.setState({ optIn: !this.state.optIn })}>
                                 <CheckBox name="optedIntoFollowUp" checked={this.state.optIn} />
                                 <Text>Please contact me occasionally to help me profit as much as possible from my app. (updates about products and services, and promotional discounts)</Text>
                             </ListItem>

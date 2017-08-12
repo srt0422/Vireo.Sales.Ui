@@ -17,7 +17,7 @@ export default {
             await customerRepository.save(customer);
 
             let charge = await stripe.charges.create({
-                amount: 100,
+                amount: 10000,
                 currency: "usd",
                 customer: customer.id,
             });

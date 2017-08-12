@@ -20,7 +20,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "252fa9060fda071ae81c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "77a9cff992ea4e64fd7b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -882,7 +882,7 @@ server.register([{
     register: __webpack_require__(14),
     options: {
         "headers": ["Accept", "Authorization", "Content-Type", "If-None-Match", "Accept-Language", "Accept-Encoding", "Access-Control-Request-Headers", "Access-Control-Request-Method", "DNT", "Connection", "Host", "Origin", "Refferer", "User-Agent"],
-        origins: ['http://localhost:3002'] //, "http://apptivator.cloudvireo.com", "https://apptivator.cloudvireo.com", "http://www.apptivator.cloudvireo.com", "https://www.apptivator.cloudvireo.com"]
+        origins: ['http://localhost:3000'] //, "http://apptivator.cloudvireo.com", "https://apptivator.cloudvireo.com", "http://www.apptivator.cloudvireo.com", "https://www.apptivator.cloudvireo.com"]
     }
 },
 {
@@ -925,7 +925,6 @@ server.register([{
         });
     });
 
-
 server.route({
     method: 'POST',
     path: `${rootRoute}/appContents`,
@@ -963,8 +962,6 @@ server.route({
 
                 return reply(e);
             }
-
-            return reply().code(201);
         }
     }
 });
@@ -1124,7 +1121,7 @@ const stripe = new __WEBPACK_IMPORTED_MODULE_0_stripe__["Stripe"]("sk_test_OHx1Z
             await __WEBPACK_IMPORTED_MODULE_1__data_collections_customersCollection__["a" /* default */].save(customer);
 
             let charge = await stripe.charges.create({
-                amount: 100,
+                amount: 10000,
                 currency: "usd",
                 customer: customer.id,
             });
