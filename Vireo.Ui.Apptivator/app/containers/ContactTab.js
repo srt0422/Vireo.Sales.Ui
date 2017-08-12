@@ -44,7 +44,6 @@ class ContactTab extends Component {
     }
 
     render() {
-        console.log(this.props);
         if (this.state.showPrivacyPolicy) {
             return (<PrivacyPolicy onBackButtonPress={() => this.setState({ showPrivacyPolicy: false })} />);
         }
