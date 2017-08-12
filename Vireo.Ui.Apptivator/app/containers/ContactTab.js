@@ -238,7 +238,19 @@ class ContactTab extends Component {
                             <ListItem>
                                 <InputGroup borderType="rounded"
                                     style={{ ...theme.contactTextInputContainer, paddingRight: "0px" }}>
-                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.callToAction" value={this.props.content.offers ? this.props.content.offers.callToAction : ""} label="Call to action (optional):" placeholder="buy now!, get in touch!, etc." />
+                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="offers.callToAction" value={this.props.content.offers ? this.props.content.offers.callToAction : ""} label="Call to action (optional):" placeholder="buy now!, get in touch!, etc...." />
+                                </InputGroup>
+                            </ListItem>
+                            <ListItem>
+                                <InputGroup borderType="rounded"
+                                    style={{ ...theme.contactTextInputContainer, paddingRight: "0px" }}>
+                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="privacyPolicy" value={this.props.content.privacyPolicy} label="Privacy Policy (optional):" placeholder="we'll provide a default if you don't have a privacy policy." />
+                                </InputGroup>
+                            </ListItem>
+                            <ListItem>
+                                <InputGroup borderType="rounded"
+                                    style={{ ...theme.contactTextInputContainer, paddingRight: "0px" }}>
+                                    <Input onChange={this.onContentChange.bind(this)} style={theme.contactTextInput} stackedLabel name="terms" value={this.props.content.terms} label="Terms of Use (optional):" placeholder="we'll provide a default if you don't have terms of use." />
                                 </InputGroup>
                             </ListItem>
                             <ListItem style={{ cursor: "pointer" }} onPress={() => this.setState({ optIn: !this.state.optIn })}>
