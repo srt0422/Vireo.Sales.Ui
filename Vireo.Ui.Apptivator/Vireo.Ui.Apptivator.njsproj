@@ -52,6 +52,10 @@
     <Compile Include="app\screens\index.js" />
     <Compile Include="app\screens\MainScreen.js" />
     <Compile Include="app\screens\NewTodoScreen.js" />
+    <Compile Include="app\screens\TermsOfService.js" />
+    <Compile Include="app\screens\PrivacyPolicy.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\screens\PurchaseScreen.js" />
     <Compile Include="app\services\apiCall.js" />
     <Compile Include="app\services\appGenerator.js" />

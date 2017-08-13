@@ -1,4 +1,5 @@
 title: Why Your Competitors Have a Mobile App
+description: A simple explanation for why a mobile app is a must for every small business
 tags:
   - mobile
   - app
