@@ -20,9 +20,18 @@ const commonLoaders = [
 
 module.exports = [{
     name: "client-side rendering",
-    //devServer: {
-    //    contentBase: path.join(__dirname, 'src')
-    //},
+    devServer: {
+        contentBase: "./web/src/client",
+        publicPath: "/web/src/client",
+        host: "localhost",
+        port: 3000,
+        hot: true,
+        inline: true,
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 500
+        }
+    },
     entry: [
         'babel-polyfill',
         'whatwg-fetch',
@@ -55,8 +64,10 @@ module.exports = [{
             //Icon.TabBarItem
             'react-native-vector-icons/Ionicons': 'native-base-web/lib/Components/Widgets/Icon',
             'react/lib/ReactNativePropRegistry': 'react-native-web-extended/dist/modules/ReactNativePropRegistry'
-        }
-    }
+        },
+        extensions: [".jsx", ".js", ".web.js", ".gif", ".jpeg", ".png", ".svg"]
+    },
+    target: "web",
 },
 {
     // The configuration for the server-side rendering
