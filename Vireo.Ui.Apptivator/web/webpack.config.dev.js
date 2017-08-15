@@ -3,7 +3,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pkg = require('../package.json');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const DIRECTORY = path.join(__dirname)
 
@@ -36,7 +35,7 @@ module.exports = [{
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 query: { cacheDirectory: true }
@@ -50,8 +49,9 @@ module.exports = [{
     },
     output: {
         filename: 'bundle.js',
-        path: path.join(__dirname, "./src/client"),
-        libraryTarget: 'commonjs'
+        path: path.join(__dirname, "./src/client")
+        //,
+        //libraryTarget: 'commonjs'
     },
     plugins: [
         new webpack.DefinePlugin({

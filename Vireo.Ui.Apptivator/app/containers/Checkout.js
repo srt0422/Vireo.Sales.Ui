@@ -17,6 +17,8 @@ import { injectStripe, CardElement } from "react-stripe-elements";
 import theme from "../themes/banzhow";
 import Contents from "../../Content";
 
+let window;
+
 class Checkout extends Component {
 
     constructor() {
@@ -25,7 +27,7 @@ class Checkout extends Component {
 
         this.state = { errorMessage: null };
     }
-
+   
     render() {
         return (
             <Container style={{ height: Dimensions.get("window").height - 50 }} theme={theme}>

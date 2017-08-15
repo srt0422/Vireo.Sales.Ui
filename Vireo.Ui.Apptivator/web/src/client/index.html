@@ -1,35 +1,45 @@
-Html Webpack Plugin:
-<pre>
-  ReferenceError: window is not defined
-  
-  - 3071:275 eval
-    webpack-internal:///3071:275:4
-  
-  - index.template.html:21858 Object.<anonymous>
-    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:21858:1
-  
-  - index.template.html:631 __webpack_require__
-    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:631:30
-  
-  - index.template.html:49 fn
-    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:49:20
-  
-  - 5:26 eval
-    webpack-internal:///5:26:12
-  
-  - index.template.html:719 Object.<anonymous>
-    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:719:1
-  
-  - index.template.html:631 __webpack_require__
-    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:631:30
-  
-  - index.template.html:49 fn
-    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:49:20
-  
-  - 2912:31 eval
-    webpack-internal:///2912:31:20
-  
-  - index.template.html:20792 Object.<anonymous>
-    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:20792:1
-  
-</pre>
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <title>Vireo Apptivator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta name="description" content="Easy and Affordable Mobile App Services">
+    <style>
+        div {
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+    <script src="vendor/stripe.js"></script>
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1819282851430311');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=1819282851430311&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+</head>
+<body>
+    <div id="react-root">       
+
+    </div>
+    <!--
+      {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+    <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
+    {% } %}
+      -->
+<script type="text/javascript" src="bundle.js"></script></body>

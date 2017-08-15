@@ -2,6 +2,8 @@ import { takeLatest } from 'redux-saga';
 import { call, put, fork } from 'redux-saga/effects';
 import payments from '../services/payments';
 
+let window;
+
 export function* addPayment(action) {
 
     try {
@@ -23,12 +25,25 @@ export function* addPayment(action) {
     }
 }
 
+export function* sucessfullPayment() {
+
+    if (!!window) {
+        fbq('track', 'Purchase');
+    }
+
+}
+
 function* watchPaymentAdd() {
     yield takeLatest('payments/add', addPayment);
 }
 
+function* watchPaymentAddSuccess() {
+    yield takeLatest('payments/add/success', sucessfullPayment);
+}
+
 export default function* () {
     yield fork(watchPaymentAdd);
+    yield fork(watchPaymentAddSuccess);
 }
 
 //export function* getTodos() {
