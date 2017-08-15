@@ -1,20 +1,35 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<head>
-    <title>Vireo Apptivator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <style>
-        div {
-            -webkit-overflow-scrolling: touch;
-        }
-    </style>
-    <script src="/vendor/stripe.js"></script>
-</head>
-<body>
-    <div id="react-root"></div>
-    <!--
-      {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
-    <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
-    {% } %}
-      -->
-<script type="text/javascript" src="bundle.js"></script></body>
+Html Webpack Plugin:
+<pre>
+  ReferenceError: window is not defined
+  
+  - 3071:275 eval
+    webpack-internal:///3071:275:4
+  
+  - index.template.html:21858 Object.<anonymous>
+    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:21858:1
+  
+  - index.template.html:631 __webpack_require__
+    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:631:30
+  
+  - index.template.html:49 fn
+    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:49:20
+  
+  - 5:26 eval
+    webpack-internal:///5:26:12
+  
+  - index.template.html:719 Object.<anonymous>
+    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:719:1
+  
+  - index.template.html:631 __webpack_require__
+    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:631:30
+  
+  - index.template.html:49 fn
+    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:49:20
+  
+  - 2912:31 eval
+    webpack-internal:///2912:31:20
+  
+  - index.template.html:20792 Object.<anonymous>
+    C:/Workspace/Vireo.Ui.Apptivator/Vireo.Ui.Apptivator/app/index.template.html:20792:1
+  
+</pre>

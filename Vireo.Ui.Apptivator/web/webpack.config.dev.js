@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const pkg = require('../package.json');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const DIRECTORY = path.join(__dirname)
 
@@ -36,8 +37,8 @@ module.exports = [{
         loaders: [
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
                 loader: 'babel-loader',
+                exclude: /node_modules/,
                 query: { cacheDirectory: true }
             },
             {
@@ -49,7 +50,8 @@ module.exports = [{
     },
     output: {
         filename: 'bundle.js',
-        path: path.join(__dirname, "./src/client")
+        path: path.join(__dirname, "./src/client"),
+        libraryTarget: 'commonjs'
     },
     plugins: [
         new webpack.DefinePlugin({
@@ -59,7 +61,7 @@ module.exports = [{
         new HtmlWebpackPlugin({
             filename: "index.html",
             pkg: pkg,
-            template: path.join(__dirname, "./src/client/index.template.html")
+            template: path.join(__dirname, "../app/index.template.html")
         }),
         new webpack.optimize.OccurrenceOrderPlugin()
     ],
@@ -70,7 +72,8 @@ module.exports = [{
             //Icon.TabBarItem
             'react-native-vector-icons/Ionicons': 'native-base-web/lib/Components/Widgets/Icon',
             'react/lib/ReactNativePropRegistry': 'react-native-web-extended/dist/modules/ReactNativePropRegistry'
-        }
+        },
+        extensions: [".jsx", ".js", ".web.js", ".gif", ".jpeg", ".png", ".svg"]
     }
 }, {
     // The configuration for the server-side rendering

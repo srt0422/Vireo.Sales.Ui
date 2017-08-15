@@ -1,12 +1,15 @@
-﻿import { Platform } from "react-native";
+﻿
+export { default as default } from "./Link";
 
-var Link = null;
+//import { Platform } from "react-native";
 
-if (Platform.OS === "web") {
-    Link = require(`./Link.${Platform.OS}.js`).default;
-}
-else {
-    Link = require("./Link");
-}
+//var Link = null;
 
-export default Link;
+//if (Platform.OS === "web") {
+//    Link = require(`./Link.${Platform.OS}.js`).default;
+//}
+//else {
+//    Link = require("./Link");
+//}
+
+//export default Link;

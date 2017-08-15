@@ -43,7 +43,7 @@ module.exports = [{
         new HtmlWebpackPlugin({
             filename: "index.html",
             pkg: pkg,
-            template: path.join(__dirname, "./src/client/index.template.html")
+            template: path.join(__dirname, "../app/index.template.html")
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         //new webpack.optimize.UglifyJsPlugin()
