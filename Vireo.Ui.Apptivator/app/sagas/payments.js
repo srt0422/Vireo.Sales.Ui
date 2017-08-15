@@ -28,7 +28,7 @@ export function* addPayment(action) {
 export function* sucessfullPayment() {
 
     if (!!window) {
-        fbq('track', 'Purchase');
+        fbq('track', 'Purchase', { value: '100.00', currency: 'USD' });
     }
 
 }
