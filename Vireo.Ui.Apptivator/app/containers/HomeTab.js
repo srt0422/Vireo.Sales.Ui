@@ -33,9 +33,9 @@ class HomeTab extends Component {
         });
     }
 
-    componentWillMount() {
-        Icon = require('react-native-vector-icons/Ionicons').default;
-    }
+    //componentWillMount() {
+    //    Icon = require('react-native-vector-icons/Ionicons').default;
+    //}
 
     handleNewBtnPress() {
         this.context.navigator.push({

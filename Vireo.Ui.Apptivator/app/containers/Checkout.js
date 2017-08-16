@@ -28,9 +28,9 @@ class Checkout extends Component {
         this.state = { errorMessage: null };
     }
 
-    componentWillMount() {
-        Icon = require('react-native-vector-icons/Ionicons').default;
-    }
+    //componentWillMount() {
+    //    Icon = require('react-native-vector-icons/Ionicons').default;
+    //}
    
     render() {
         return (
