@@ -43,6 +43,10 @@ class ContactTab extends Component {
         };
     }
 
+    componentWillMount() {
+        Icon = require('react-native-vector-icons/Ionicons').default;
+    }
+
     render() {
         if (this.state.showPrivacyPolicy) {
             return (<PrivacyPolicy onBackButtonPress={() => this.setState({ showPrivacyPolicy: false })} />);

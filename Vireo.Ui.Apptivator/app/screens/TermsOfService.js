@@ -16,9 +16,6 @@ export default (props) => (
                     }} />
             </Button>
             <Title>{Contents.comanyTitle}</Title>
-            {/*<Button transparent onPress={this.handleNewBtnPress.bind(this)}>
-            <Icon name="md-add" />
-          </Button>*/}
         </Header>
         <Content refreshControl={
             <RefreshControl

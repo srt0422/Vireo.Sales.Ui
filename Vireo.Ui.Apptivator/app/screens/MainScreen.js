@@ -6,7 +6,8 @@ import {
 import theme from '../themes/banzhow';
 import HomeTab from '../containers/HomeTab';
 import ContactTab from '../containers/ContactTab';
-import Icon from 'react-native-vector-icons/Ionicons';
+
+let Icon;
 
 class MainScreen extends Component {
 
@@ -36,23 +37,27 @@ class MainScreen extends Component {
     }
 
     submit() {
-        this.props.navigator.push({index: 1, title: "Purchase Screen"});
+        this.props.navigator.push({ index: 1, title: "Purchase Screen" });
+    }
+
+    componentWillMount() {
+        Icon = require('react-native-vector-icons/Ionicons').default;
     }
 
     render() {
         return (
-            <TabBarIOS                
+            <TabBarIOS
                 tintColor={theme.brandPrimary}
-                unselectedTintColor={theme.grey}>                
+                unselectedTintColor={theme.grey}>
                 <Icon.TabBarItem
                     title="Home"
                     iconName="ios-home-outline"
                     selectedIconName="ios-home"
-                    selected={ this.state.tabIndex === 0}
+                    selected={this.state.tabIndex === 0}
                     onPress={() => this.setState({ tabIndex: 0 })}
                     iconColor={theme.grey}
                     selectedIconColor={theme.brandPrimary}
-                    style={{flex: 1}}>
+                    style={{ flex: 1 }}>
                     <HomeTab
                         onCallToAction={this.callToAction.bind(this)} />
 
