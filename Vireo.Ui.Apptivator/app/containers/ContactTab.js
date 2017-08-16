@@ -16,7 +16,7 @@ import {
     CheckBox
 } from 'native-base';
 
-import { Text, RefreshControl, Image, Dimensions, Alert, Linking } from 'react-native';
+import { Text, RefreshControl, Image, Dimensions, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import FileInput from "../components/FileInput";
 import theme from '../themes/banzhow';
@@ -25,6 +25,8 @@ import Link from "../components/Link";
 
 import PrivacyPolicy from "../screens/PrivacyPolicy";
 import TermsOfService from "../screens/TermsOfService";
+
+let Alert;
 
 class ContactTab extends Component {
 
@@ -43,9 +45,9 @@ class ContactTab extends Component {
         };
     }
 
-    //componentWillMount() {
-    //    Icon = require('react-native-vector-icons/Ionicons').default;
-    //}
+    componentWillMount() {
+        Alert = require('react-native').Alert;
+    }
 
     render() {
         if (this.state.showPrivacyPolicy) {

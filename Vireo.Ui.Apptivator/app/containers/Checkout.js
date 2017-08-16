@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { RefreshControl, Alert, Dimensions, Image } from "react-native";
+import { RefreshControl, Dimensions, Image } from "react-native";
 import {
     Card,
     CardItem,
