@@ -17,7 +17,7 @@ import { injectStripe, CardElement } from "react-stripe-elements";
 import theme from "../themes/banzhow";
 import Contents from "../../Content";
 
-let window;
+let Alert;
 
 class Checkout extends Component {
 
@@ -28,9 +28,9 @@ class Checkout extends Component {
         this.state = { errorMessage: null };
     }
 
-    //componentWillMount() {
-    //    Icon = require('react-native-vector-icons/Ionicons').default;
-    //}
+    componentWillMount() {
+        Alert = require('react-native').Alert;
+    }
    
     render() {
         return (

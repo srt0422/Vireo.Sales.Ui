@@ -4,7 +4,7 @@
  * https://miria.moe
  */
 import React from "react";
-import { AppRegistry } from 'react-native';
+//import { AppRegistry } from 'react-native';
 import Entry from '../../../../app/entry/index';
 import { OSTheme } from 'native-base';
 
@@ -12,6 +12,9 @@ import { OSTheme } from 'native-base';
 OSTheme.setOSTheme('ios');
 
 setTimeout(() => {
+
+    let AppRegistry = require("react-native").AppRegistry;
+
     AppRegistry.registerComponent('App', () => Entry);
     AppRegistry.runApplication('App', {
         rootTag: document.getElementsByClassName('react-root')[0]
