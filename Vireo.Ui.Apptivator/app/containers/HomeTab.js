@@ -3,17 +3,16 @@ import {
     Container,
     Header,
     Title,
-    Icon,
     Content,
     Button,
-    View,
-    List,
-    ListItem
+    View
 } from 'native-base';
 import { Text, RefreshControl, Image, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import theme from '../themes/banzhow';
 import Contents from "../../Content";
+
+import { Offer } from "../components";
 
 class HomeTab extends Component {
 
@@ -112,55 +111,7 @@ class HomeTab extends Component {
                         paddingBottom: "20px"
                     }} className="col-sm-3 price-group">
                         {Contents.offers.map((offer, i) => (
-                            <View style={{
-                                borderColor: "#ebebeb",
-                                borderWidth: 0,
-                                borderRadius: 0,
-                                boxShadow: "none"
-                            }} key={i} className="panel panel-default text-center" >
-                                <View style={{
-                                    backgroundColor: theme.subHeadingDefaultBg,
-                                    borderRadius: 0,
-                                    borderWidth: 0,
-                                    paddingVertical: "10px",
-                                    paddingHorizontal: "15px"
-                                }} className="panel-heading">
-                                    <Text style={theme.offerTitle}>{offer.title}</Text>
-                                </View>
-                                <View style={theme.offerPrice} className="panel-body">
-                                    <Text style={{
-                                        fontSize: "45px",
-                                        color: "#fff",
-                                        textAlign: "center"
-                                    }} className="panel-title price">${offer.priceDollars}
-                                        <Text style={{
-                                            textAlignVertical: "bottom",
-                                            fontSize: "45%",
-                                            color: "#fff"
-                                        }} className="price-cents">.{offer.priceCents}</Text>
-                                        <Text style={{
-                                            fontSize: "30%",
-                                            fontStyle: "italic",
-                                            color: "#fff",
-                                            paddingLeft: "10px",
-                                            whiteSpace: "noWrap"
-                                        }} className="price-month">{offer.subscriptionPeriod}</Text>
-                                    </Text>
-                                </View>
-                                <List style={{
-                                    backgroundColor: "#fafafa"
-                                }} className="list-group">
-                                    {offer.descriptions.map((description, i) => (
-                                        <ListItem style={theme.offerDescription} className="list-group-item" key={i}>
-                                            <Text style={theme.offerDescriptionText}>{description}</Text>
-                                        </ListItem>
-                                    ))}
-
-                                    <ListItem onClick={this.props.onCallToAction} onPress={this.props.onCallToAction} style={theme.callToActionContainer} className="list-group-item">
-                                        <Button large block className="btn btn-primary ui-link" onPress={this.props.onCallToAction} >{offer.callToAction}</Button>
-                                    </ListItem>
-                                </List>
-                            </View>
+                            <Offer key={i} {...offer} theme={theme} onCallToAction={this.props.onCallToAction} />
                         ))}
                     </View>
                 </Content>

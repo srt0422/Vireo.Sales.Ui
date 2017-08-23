@@ -41,11 +41,11 @@ According to Gallop<sup id="source_ref2">[2](#source2)</sup> the average smartph
 
 At this price point there's no reason for any business to loose the plethora of opportunities created by the most searched app source in the market<sup id="source_ref6">[6](#source6)</sup>.  Even small businesses can take advantage of the marketing power of mobile apps.
 
-If you'd like to find out more, you can find more details on Vireo's app services page.  [Vireo app services](http://apptivator.cloudvireo.com/index.html)
+If you'd like to find out more, you can find more details on Vireo's app services page.  [Vireo app services](https://apptivator.cloudvireo.com/index.html?source=link)
 
 <sup id="source1">[1](#source_ref1)</sup> [blog post](https://www.entrepreneur.com/article/269978)
 <sup  id="source2">[2](#source_ref2)</sup> [gallup](http://www.gallup.com/poll/184046/smartphone-owners-check-phone-least-hourly.aspx)
 <sup id="source3">[3](#source_ref3)</sup> [tech crunch](https://techcrunch.com/2015/09/10/u-s-consumers-now-spend-more-time-in-apps-than-watching-tv/#.2i85ox:DJrh)
 <sup id="source4">[4](#source_ref4)</sup> [google](https://www.thinkwithgoogle.com/advertising-channels/mobile/mobile-path-to-purchase-5-key-findings/)
-<sup id="source5">[5](#source_ref5)</sup> [vireo](http://apptivator.cloudvireo.com/index.html)
+<sup id="source5">[5](#source_ref5)</sup> [vireo](https://apptivator.cloudvireo.com/index.html?source=link)
 <sup id="source5">[6](#source_ref6)</sup> [blog post](https://blog.kissmetrics.com/app-store-optimization/)

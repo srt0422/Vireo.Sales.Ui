@@ -9,7 +9,7 @@ export default {
         priceDollars: "100",
         priceCents: "00",
         subscriptionPeriod: "",
-        callToAction: "Sign Up Now!",
+        callToAction: "Build your app now!",
         descriptions: [
             "Includes one app with your company's custom content",
             "An easy order form to connect your customers to your products and services",

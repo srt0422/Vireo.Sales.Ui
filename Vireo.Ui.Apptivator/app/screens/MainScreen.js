@@ -33,10 +33,16 @@ class MainScreen extends Component {
     }
 
     callToAction() {
+
+        fbq('track', 'Lead');
+
         this.setState({ tabIndex: 1 });
     }
 
     submit() {
+
+        fbq('track', 'CompleteRegistration');
+
         this.props.navigator.push({ index: 1, title: "Purchase Screen" });
     }
 
