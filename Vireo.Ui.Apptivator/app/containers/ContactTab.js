@@ -16,10 +16,10 @@ import {
     CheckBox
 } from 'native-base';
 
-import { Text, RefreshControl, Image, Dimensions, Linking } from 'react-native';
+const {  Text, RefreshControl, Image, Dimensions, Linking   } = require('react-native');
 import { connect } from 'react-redux';
 import FileInput from "../components/FileInput";
-import theme from '../themes/banzhow';
+const theme = require('../themes/banzhow').default;
 import Contents from "../../Content";
 import Link from "../components/Link";
 

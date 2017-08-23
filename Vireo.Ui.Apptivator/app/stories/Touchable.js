@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 
-import { Text } from 'react-native';
+const {  Text   } = require('react-native');
 import { Touchable } from '../components/Touchable';
 
 storiesOf('Touchable', module)

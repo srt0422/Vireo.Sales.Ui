@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navigator, Text } from 'react-native';
+const {  Navigator, Text   } = require('react-native');
 import MainScreen from './MainScreen';
 import PurchaseScreen from './PurchaseScreen';
 import PrivacyPolicy from "./PrivacyPolicy";

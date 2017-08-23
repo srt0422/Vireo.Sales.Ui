@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { RefreshControl, Dimensions, Image } from "react-native";
+const {  RefreshControl, Dimensions, Image   } = require('react-native');
 import {
     Card,
     CardItem,
@@ -14,7 +14,7 @@ import {
 } from "native-base";
 import { connect } from "react-redux";
 import { injectStripe, CardElement } from "react-stripe-elements";
-import theme from "../themes/banzhow";
+const theme = require("../themes/banzhow").default;
 import Contents from "../../Content";
 
 let Alert;

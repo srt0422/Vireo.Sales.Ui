@@ -6,6 +6,12 @@ import "../vendor/stripe.js";
 
 import './index.css'
 
+globals.window = {
+    history: {
+
+    }
+};
+
 const TemplateWrapper = ({ children }) =>
     <div>
         <Helmet

@@ -1,7 +1,7 @@
 ﻿
 export { default as default } from "./Link";
 
-//import { Platform } from "react-native";
+//const {  Platform   } = require('react-native');
 
 //var Link = null;
 

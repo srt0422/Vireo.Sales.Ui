@@ -1,6 +1,6 @@
 import Color from 'color';
 
-import { Platform } from 'react-native';
+const {  Platform   } = require('react-native');
 
 let theme = {
     brandPrimary: '#ff5917',
