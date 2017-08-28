@@ -49,7 +49,7 @@ export function* setContent(action) {
 export function* getContent() {
     try {
 
-        const response = yield call(appGenerator.fetch);
+        const response = yield call(contactService.fetch);
 
         yield put({
             type: 'contact/get/success',

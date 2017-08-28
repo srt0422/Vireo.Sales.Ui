@@ -55,7 +55,7 @@ const contact = handleActions({
     //  return {...state, isLoading: false, err: action.err};
     //},
 }, {
-        content: {},
+        content: { optIn: true },
         isLoading: false
     });
 

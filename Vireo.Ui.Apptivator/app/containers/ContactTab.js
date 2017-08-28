@@ -149,7 +149,7 @@ class ContactTab extends Component {
 
                             </ListItem>
 
-                            <ListItem style={{ cursor: "pointer" }} onPress={(e)=> { this.onContentChange(e); }}>
+                            <ListItem style={{ cursor: "pointer" }} onPress={(e) => { this.onContentChange({ target: { value: !this.props.content.optIn, name: "optIn" } }); }}>
                                 <CheckBox name="optedIntoFollowUp" checked={this.props.content.optIn} />
                                 <Text>Send me occasional emails with free content and offers from Vireo.</Text>
                             </ListItem>
