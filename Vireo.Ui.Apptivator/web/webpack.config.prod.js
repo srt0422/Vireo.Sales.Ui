@@ -48,7 +48,7 @@ module.exports = [
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify("production"),
-            'process.env.API_HOST': JSON.stringify("http://apptivator.azurewebsites.net/api")
+            'process.env.API_HOST': JSON.stringify("http://apptivator-service.azurewebsites.net")
         }),
         new HtmlWebpackPlugin({
             filename: "index.html",
