@@ -1,6 +1,6 @@
 ﻿import apiCall from "./apiCall";
 
-const content = {};
+const content = { optIn: true };
 
 export function* save() {
     apiCall("contact", "POST", {

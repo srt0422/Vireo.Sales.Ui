@@ -13,6 +13,16 @@ const contact = handleActions({
         return { ...state, isLoading: false, err: action.err };
     },
 
+    ['contact/add'](state) {
+        return { ...state, isLoading: true };
+    },
+    ['contact/add/success'](state, action) {
+        return { ...state, isLoading: false };
+    },
+    ['contact/add/failed'](state, action) {
+        return { ...state, isLoading: false, err: action.err };
+    },
+
     ['contact/get'](state, action) {
         return { ...state, isLoading: true };
     },

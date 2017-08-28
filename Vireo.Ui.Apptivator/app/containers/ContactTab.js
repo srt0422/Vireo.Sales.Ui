@@ -213,7 +213,7 @@ class ContactTab extends Component {
         }
         else {
 
-            this.props.dispatch({ type: 'payments/add', payload: { token: token.id, email: this.props.email } });
+            this.props.dispatch({ type: 'contact/add' });
 
             this.props.onSubmit();
         }
