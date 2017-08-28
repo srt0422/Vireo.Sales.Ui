@@ -62,7 +62,8 @@ module.exports = [
             new HtmlWebpackPlugin({
                 filename: "index.html",
                 pkg: pkg,
-                template: path.join(__dirname, "../app/index.template.html")
+                template: path.join(__dirname, "../app/index.template.html"),
+                environment: process.env.NODE_ENV || 'development'
             }),
             new webpack.optimize.OccurrenceOrderPlugin()
         ],
