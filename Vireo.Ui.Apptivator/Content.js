@@ -41,8 +41,8 @@ export default {
             descriptions: [
                 "One digital marketing service for each subscription month:",
                 "1 facebook campaign for one week with a single post or ad",
-                "App store optimization for 1 mobile app",
-                "SEO for 1 website"
+                "OR App store optimization for 1 mobile app",
+                "OR SEO for 1 website"
             ]
         }],
         [{

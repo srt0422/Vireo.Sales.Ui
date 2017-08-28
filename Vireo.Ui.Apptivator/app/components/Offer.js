@@ -45,7 +45,7 @@ export default (props) => <View style={{
             </ListItem>
         ))}
 
-        <ListItem onClick={props.onCallToAction} onPress={props.onCallToAction} style={props.theme.callToActionContainer} className="list-group-item">
+        <ListItem style={props.theme.callToActionContainer} className="list-group-item">
             <Button large block className="btn btn-primary ui-link" onPress={() => props.onCallToAction(props.offerKey)} >{props.callToAction}</Button>
         </ListItem>
     </List>
