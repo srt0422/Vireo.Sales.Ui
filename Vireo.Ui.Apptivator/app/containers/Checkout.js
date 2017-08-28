@@ -110,10 +110,10 @@ class Checkout extends Component {
     }
 }
 
-function mapStateToProps({ payments, appContents }) {
+function mapStateToProps({ payments, contact }) {
     return {
         ...payments,
-        email: appContents.content.email
+        email: contact.content.email
     };
 }
 
