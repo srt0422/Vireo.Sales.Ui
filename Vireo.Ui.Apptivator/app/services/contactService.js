@@ -20,5 +20,6 @@ export function fetch() {
 
 export default {
     setField,
-    fetch
+    fetch,
+    save
 };
