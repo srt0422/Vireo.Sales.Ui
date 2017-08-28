@@ -108,7 +108,7 @@ class HomeTab extends Component {
                                         {offer.map((childOffer, cIndex) => {
                                             return (
                                                 <View style={this.getOfferStyle(cIndex, offer)} key={cIndex}>
-                                                    <Offer {...childOffer} theme={theme} onCallToAction={this.props.onCallToAction} />
+                                                    <Offer {...childOffer} theme={theme} onCallToAction={this.onCallToAction.bind(this)} />
                                                 </View>
                                             );
                                         })}
@@ -118,7 +118,7 @@ class HomeTab extends Component {
                             else {
                                 return (
                                     <View style={this.getOfferStyle(i, Contents.offers)} key={i}>
-                                        <Offer {...offer} theme={theme} onCallToAction={this.props.onCallToAction} />
+                                        <Offer {...offer} theme={theme} onCallToAction={this.onCallToAction.bind(this)} />
                                     </View>
                                 );
                             }
@@ -127,6 +127,19 @@ class HomeTab extends Component {
                 </Content>
             </Container>
         );
+    }
+
+    onCallToAction(path) {
+
+        this.props.dispatch({
+            type: 'contact/set',
+            payload: {
+                name: "product",
+                value: path
+            }
+        });
+
+        this.props.onCallToAction(path);
     }
 
     getOfferStyle(i, offers) {

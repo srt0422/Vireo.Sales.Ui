@@ -188,9 +188,7 @@ class ContactTab extends Component {
 
     onContentChange(e) {
 
-        const { dispatch } = this.props;
-
-        dispatch({
+        this.props.dispatch({
             type: 'contact/set',
             payload: {
                 name: e.target.name,

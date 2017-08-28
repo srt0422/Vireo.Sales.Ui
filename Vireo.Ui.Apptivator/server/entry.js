@@ -229,7 +229,7 @@ server.route({
     path: `${rootRoute}/contact`,
     handler: function (request, reply) {
 
-        const { from, email, message, optIn } = request.payload;
+        const { from, email, message, optIn, product } = request.payload;
 
         server.render("email", { message }, function (err, rendered, config) {
 
@@ -240,7 +240,7 @@ server.route({
             const emailOptions = {
                 from: from,
                 to: "info@cloudvireo.com",
-                subject: `Apptivator Contact - ${from} - opted in: ${optIn}`,
+                subject: `Apptivator Contact - ${from} - requested product ${product} - opted in: ${optIn}`,
                 html: rendered
             };
 
