@@ -20,7 +20,9 @@ class MainScreen extends Component {
     }
 
     constructor(props) {
+
         super(props);
+
         this.state = {
             tabIndex: 0
         };
@@ -32,11 +34,12 @@ class MainScreen extends Component {
         };
     }
 
-    callToAction() {
+    callToAction(path) {
 
         fbq('track', 'Lead');
 
-        this.setState({ tabIndex: 1 });
+        this.props.navigator.push({ index: path });
+        //this.setState({ tabIndex: 1 });
     }
 
     submit() {
@@ -54,13 +57,14 @@ class MainScreen extends Component {
         return (
             <TabBarIOS
                 tintColor={theme.brandPrimary}
-                unselectedTintColor={theme.grey}>
+                unselectedTintColor={theme.grey}
+                style={{ maxHeight: "100%" }}>
                 <Icon.TabBarItem
                     title="Home"
                     iconName="ios-home-outline"
                     selectedIconName="ios-home"
-                    selected={this.state.tabIndex === 0}
-                    onPress={() => this.setState({ tabIndex: 0 })}
+                    selected={this.props.path === "home"}
+                    onPress={() => this.props.navigator.push({ index: "home" })}
                     iconColor={theme.grey}
                     selectedIconColor={theme.brandPrimary}
                     style={{ flex: 1 }}>
@@ -73,8 +77,8 @@ class MainScreen extends Component {
                     title="Contact"
                     iconName="ios-paperplane-outline"
                     selectedIconName="ios-paperplane"
-                    selected={this.state.tabIndex === 1}
-                    onPress={() => this.setState({ tabIndex: 1 })}
+                    selected={this.props.path !== "home"}
+                    onPress={() => this.props.navigator.push({ index: "contact" })}
                     iconColor={theme.grey}
                     selectedIconColor={theme.brandPrimary}>
                     <ContactTab onSubmit={this.submit.bind(this)} />

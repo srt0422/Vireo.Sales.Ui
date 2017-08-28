@@ -31,13 +31,15 @@
   <ItemGroup>
     <Compile Include="app\components\FileInput\FileInput.js" />
     <Compile Include="app\components\FileInput\index.js" />
+    <Compile Include="app\components\index.js" />
     <Compile Include="app\components\Link\index.js" />
     <Compile Include="app\components\Link\Link.ios.js" />
     <Compile Include="app\components\Link\Link.web.js" />
-    <Compile Include="app\components\TodoForm.js" />
-    <Compile Include="app\components\TodoList.js" />
-    <Compile Include="app\components\Touchable.js" />
+    <Compile Include="app\components\Offer.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\containers\Checkout.js" />
+    <Compile Include="app\containers\AppBuilder.js" />
     <Compile Include="app\containers\ContactTab.js" />
     <Compile Include="app\containers\HomeTab.js" />
     <Compile Include="app\containers\NewTodo.js" />
@@ -62,7 +64,7 @@
     <Compile Include="app\services\payments.js" />
     <Compile Include="app\stories\Touchable.js" />
     <Compile Include="app\stylesheets\TodoList.js" />
-    <Compile Include="app\themes\banzhow.js" />
+    <Compile Include="app\themes\banzhow.web.js" />
     <Compile Include="app\themes\yayoi.js" />
     <Compile Include="Content.js" />
     <Compile Include="index.web.js" />
@@ -81,29 +83,7 @@
     <Compile Include="server\services\paymentService.js" />
     <Compile Include="web\.storybook\config.js" />
     <Compile Include="web\.storybook\webpack.config.js" />
-    <Compile Include="web\gatsby\public\app-ae544f2205cfdb0081cc.js" />
-    <Compile Include="web\gatsby\public\app-c9a413dfefa0316d3cd5.js" />
-    <Compile Include="web\gatsby\public\app-ff93018c4d14e27b9e7e.js" />
-    <Compile Include="web\gatsby\public\commons-a706efda9882e3aecc8c.js" />
-    <Compile Include="web\gatsby\public\component---src-layouts-index-js-dd44f9c74a6d3a9c300c.js" />
-    <Compile Include="web\gatsby\public\component---src-pages-404-js-4503918ea3a16cfcdb75.js" />
-    <Compile Include="web\gatsby\public\component---src-pages-index-js-539bcd7f34b857a4f327.js" />
-    <Compile Include="web\gatsby\public\component---src-pages-index-js-cc7521ceb874fd795e7c.js" />
-    <Compile Include="web\gatsby\public\component---src-pages-index-js-f7ab90bb63799dabcf15.js" />
-    <Compile Include="web\gatsby\public\component---src-pages-page-2-js-b6ee7ccbc502ba5cac1a.js" />
-    <Compile Include="web\gatsby\public\path----557518bd178906f8d58a.js" />
-    <Compile Include="web\gatsby\public\path---404-a0e39f21c11f6a62c5ab.js" />
-    <Compile Include="web\gatsby\public\path---404-html-a0e39f21c11f6a62c5ab.js" />
-    <Compile Include="web\gatsby\public\path---index-a0e39f21c11f6a62c5ab.js" />
-    <Compile Include="web\gatsby\public\path---page-2-a0e39f21c11f6a62c5ab.js" />
-    <Compile Include="web\gatsby\public\render-page.js" />
-    <Compile Include="web\gatsby\src\layouts\index.js" />
-    <Compile Include="web\gatsby\src\pages\404.js" />
-    <Compile Include="web\gatsby\src\pages\index.js" />
-    <Compile Include="web\gatsby\src\pages\page-2.js" />
-    <Compile Include="web\gatsby\gatsby-node.js" />
     <Compile Include="web\showip.js" />
-    <Compile Include="web\gatsby\src\vendor\stripe.js" />
     <Compile Include="web\webpack.config.dev.js" />
     <Compile Include="web\webpack.config.prod.js" />
     <Content Include=".babelrc" />
@@ -112,27 +92,6 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="server\data\collections\customersCollection.js" />
-    <Content Include="web\gatsby\package.json" />
-    <Content Include="web\gatsby\public\app-ae544f2205cfdb0081cc.js.map" />
-    <Content Include="web\gatsby\public\app-c9a413dfefa0316d3cd5.js.map" />
-    <Content Include="web\gatsby\public\app-ff93018c4d14e27b9e7e.js.map" />
-    <Content Include="web\gatsby\public\chunk-manifest.json" />
-    <Content Include="web\gatsby\public\commons-a706efda9882e3aecc8c.js.map" />
-    <Content Include="web\gatsby\public\component---src-layouts-index-js-dd44f9c74a6d3a9c300c.js.map" />
-    <Content Include="web\gatsby\public\component---src-pages-404-js-4503918ea3a16cfcdb75.js.map" />
-    <Content Include="web\gatsby\public\component---src-pages-index-js-539bcd7f34b857a4f327.js.map" />
-    <Content Include="web\gatsby\public\component---src-pages-index-js-cc7521ceb874fd795e7c.js.map" />
-    <Content Include="web\gatsby\public\component---src-pages-index-js-f7ab90bb63799dabcf15.js.map" />
-    <Content Include="web\gatsby\public\component---src-pages-page-2-js-b6ee7ccbc502ba5cac1a.js.map" />
-    <Content Include="web\gatsby\public\index.html" />
-    <Content Include="web\gatsby\public\path----557518bd178906f8d58a.js.map" />
-    <Content Include="web\gatsby\public\path---404-a0e39f21c11f6a62c5ab.js.map" />
-    <Content Include="web\gatsby\public\path---404-html-a0e39f21c11f6a62c5ab.js.map" />
-    <Content Include="web\gatsby\public\path---index-a0e39f21c11f6a62c5ab.js.map" />
-    <Content Include="web\gatsby\public\path---page-2-a0e39f21c11f6a62c5ab.js.map" />
-    <Content Include="web\gatsby\public\stats.json" />
-    <Content Include="web\gatsby\public\styles.css" />
-    <Content Include="web\gatsby\src\layouts\index.css" />
     <Content Include="web\StaticApp.js" />
   </ItemGroup>
   <ItemGroup>
@@ -160,14 +119,7 @@
     <Folder Include="shared\" />
     <Folder Include="web\" />
     <Folder Include="web\.storybook\" />
-    <Folder Include="web\gatsby\" />
-    <Folder Include="web\gatsby\public\" />
-    <Folder Include="web\gatsby\public\static\" />
-    <Folder Include="web\gatsby\src\" />
-    <Folder Include="web\gatsby\src\layouts\" />
-    <Folder Include="web\gatsby\src\pages\" />
     <Folder Include="web\src\" />
-    <Folder Include="web\gatsby\src\vendor\" />
     <Folder Include="web\src\server\" />
     <Folder Include="web\src\client\" />
   </ItemGroup>

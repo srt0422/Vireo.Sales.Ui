@@ -5,8 +5,8 @@ export default (props) => <View style={{
     borderColor: "#ebebeb",
     borderWidth: 0,
     borderRadius: 0,
-    boxShadow: "none"
-}} className="panel panel-default text-center" >
+    boxShadow: "none",
+}} className="panel panel-default text-center offer" >
     <View style={{
         backgroundColor: props.theme.subHeadingDefaultBg,
         borderRadius: 0,
@@ -46,7 +46,7 @@ export default (props) => <View style={{
         ))}
 
         <ListItem onClick={props.onCallToAction} onPress={props.onCallToAction} style={props.theme.callToActionContainer} className="list-group-item">
-            <Button large block className="btn btn-primary ui-link" onPress={props.onCallToAction} >{props.callToAction}</Button>
+            <Button large block className="btn btn-primary ui-link" onPress={() => props.onCallToAction(props.offerKey)} >{props.callToAction}</Button>
         </ListItem>
     </List>
 </View>;

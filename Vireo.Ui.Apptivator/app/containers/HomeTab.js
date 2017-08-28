@@ -7,7 +7,7 @@ import {
     Button,
     View
 } from 'native-base';
-import { Text, RefreshControl, Image, Dimensions } from 'react-native';
+import { Text, RefreshControl, Image, Dimensions, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import theme from '../themes/banzhow';
 import Contents from "../../Content";
@@ -69,18 +69,17 @@ class HomeTab extends Component {
                         refreshing={this.props.isLoading}
                         onRefresh={() => { this.props.dispatch({ type: 'appContents/get' }) }}
                     />}
-                    style={theme.contentContainer}
-                    contentContainerStyle={{ flexShrink: 1, alignItems: "stretch" }}>
-                    <View style={{
-                        alignItems: "center", paddingTop: "45px", paddingBottom: "50px"
-                    }}>
+                    style={theme.innerWrapper}
+                    contentContainerStyle={theme.outerWrapper}>
+                    <View style={theme.topContentWrapper}>
                         <Text style={{
                             fontFamily: 'open_sanslight',
-                            fontSize: "19px",
+                            fontSize: 24,
                             marginTop: "20px",
                             marginBottom: "10px",
                             color: "#666",
-                            textAlign: "center"
+                            textAlign: "center",
+                            lineHeight: "1.25"
                         }}>{Contents.homeHeading}</Text>
 
                         <View style={{
@@ -96,27 +95,99 @@ class HomeTab extends Component {
                         <Text style={{
                             textAlign: "center",
                             maxWidth: "750px",
-                            fontSize: "15px",
+                            fontSize: 18,
                             color: "#7f8c8d",
-                            lineHeight: "20px"
+                            lineHeight: "2"
                         }}>{Contents.homeContent}</Text>
                     </View>
-                    <View style={{
-                        minHeight: "1px",
-                        paddingLeft: "15px",
-                        paddingRight: "15px",
-                        alignItems: "center",
-                        paddingTop: "25px",
-                        backgroundColor: "#ecf0f1",
-                        paddingBottom: "20px"
-                    }} className="col-sm-3 price-group">
-                        {Contents.offers.map((offer, i) => (
-                            <Offer key={i} {...offer} theme={theme} onCallToAction={this.props.onCallToAction} />
-                        ))}
+                    <View style={{ ...this.getOfferContainerStyle(), flexDirection: "column", alignItems: "center" }} className="col-sm-3 price-group">
+                        {Contents.offers.map((offer, i) => {
+                            if (offer.length) {
+                                return (
+                                    <View style={this.getOfferContainerStyle(true)} key={i}>
+                                        {offer.map((childOffer, cIndex) => {
+                                            return (
+                                                <View style={this.getOfferStyle(cIndex, offer)} key={cIndex}>
+                                                    <Offer {...childOffer} theme={theme} onCallToAction={this.props.onCallToAction} />
+                                                </View>
+                                            );
+                                        })}
+                                    </View>
+                                );
+                            }
+                            else {
+                                return (
+                                    <View style={this.getOfferStyle(i, Contents.offers)} key={i}>
+                                        <Offer {...offer} theme={theme} onCallToAction={this.props.onCallToAction} />
+                                    </View>
+                                );
+                            }
+                        })}
                     </View>
                 </Content>
-            </Container >
+            </Container>
         );
+    }
+
+    getOfferStyle(i, offers) {
+
+        let windowWidth = Dimensions.get("window").width;
+        let isMobile = windowWidth <= 720;
+
+        var style = {
+            //height: 371.200,
+            display: "block",
+            textAlign: "center",
+            width: "100%",
+            paddingBottom: isMobile ? 50 : 0
+        };
+
+        var baseWidth = windowWidth * .8;
+
+        if (windowWidth > 720) {
+            style = {
+                ...style,
+                display: "inline",
+                width: (baseWidth / offers.length) - ((25 * (offers.length - 1)) / offers.length),
+                marginLeft: i !== 0 ? 25 : 0
+            };
+        }
+
+        return style;
+    }
+
+    getOfferContainerStyle(isChildContainer) {
+
+        let windowWidth = Dimensions.get("window").width;
+        let isMobile = windowWidth <= 720;
+
+        let commonStyles = {
+            minHeight: "1px",
+            alignItems: "center",
+            //paddingTop: "25px",
+            backgroundColor: "#ecf0f1",
+            paddingBottom: isMobile || isChildContainer ? 0 : 50,
+            flexDirection: "column",
+            width: "100%"
+        };
+
+        if (!isChildContainer) {
+            commonStyles.paddingTop = 50;
+        }
+
+        if (isMobile) {
+            return commonStyles;
+        }
+
+        return {
+            ...commonStyles,
+            flexDirection: "row",
+            alignItems: "baseline",
+            paddingHorizontal: 50
+        };
+    }
+
+    getOfferWidth(offer, index) {
     }
 }
 

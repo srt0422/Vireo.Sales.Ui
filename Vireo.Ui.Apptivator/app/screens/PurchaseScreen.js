@@ -26,10 +26,6 @@ class PurchaseScreen extends Component {
         };
     }
 
-    callToAction() {
-        this.setState({ tabIndex: 1 });
-    }
-
     render() {
         return (
             <Elements>

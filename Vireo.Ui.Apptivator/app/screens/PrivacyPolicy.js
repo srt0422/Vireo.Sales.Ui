@@ -22,7 +22,7 @@ export default (props) => (
                 refreshing={false}
                 onRefresh={() => { }}
             />}
-            style={theme.contentContainer} >
+            style={theme.innerWrapper} >
             <View style={{ padding: "50px", lineHeight: "36px" }}>
                 <View>
                     <Button small primary onPress={props.onBackButtonPress}><Text style={{ lineHeight: 1, color: "#fff" }}>Back</Text></Button>

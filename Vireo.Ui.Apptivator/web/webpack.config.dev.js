@@ -18,14 +18,14 @@ module.exports = [
         devtool: 'cheap-eval-source-map',
         devServer: {
             contentBase: "./web/src/client",
-            publicPath: "/web/src/client",
+            publicPath: "./web/src/client",
             host: "localhost",
-            port: 3000,
-            hot: true,
+            port: 3080,
             inline: true,
+            hot: true,
             watchOptions: {
                 aggregateTimeout: 300,
-                poll: 500
+                //poll: 500
             }
         },
         entry: [
@@ -50,7 +50,7 @@ module.exports = [
         },
         output: {
             filename: 'bundle.js',
-            path: path.join(__dirname, "./src/client")
+            path: path.resolve(__dirname, "src/client")
             //,
             //libraryTarget: 'commonjs'
         },

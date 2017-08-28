@@ -47,7 +47,7 @@ class Checkout extends Component {
                         refreshing={this.props.isLoading}
                         onRefresh={() => { this.props.dispatch({ type: 'appContents/get' }) }}
                     />}
-                    style={theme.contentContainer}
+                    style={theme.innerWrapper}
                     contentContainerStyle={{ flexShrink: 1, alignItems: "stretch" }}>
 
                     {this.props.success ? (
@@ -71,7 +71,7 @@ class Checkout extends Component {
                                 marginVertical: "50px"
                             }}>
                                 <CardItem header style={theme.checkoutHeader}>
-                                    <Text style={theme.checkoutHeaderText}>Now we can build your mobile App with the content you just entered.  Please enter your credit card information below so we can complete your transaction.</Text>
+                                    <Text style={theme.checkoutHeaderText}>We will get started with your selected package immediately and contact you ASAP!  Please enter your payment details below so we can process your request.</Text>
                                 </CardItem>
                                 <CardItem>
                                     <CardElement />
@@ -86,7 +86,6 @@ class Checkout extends Component {
                                 ) : ""}
                             </Card>
                         )}
-                    }
                 </Content>
             </Container>
         );

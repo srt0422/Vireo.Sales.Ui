@@ -223,3 +223,36 @@ server.route({
         });
     }
 });
+
+server.route({
+    method: 'POST',
+    path: `${rootRoute}/contact`,
+    handler: function (request, reply) {
+
+        const { from, email, message, optIn } = request.payload;
+
+        server.render("email", { message }, function (err, rendered, config) {
+
+            if (err) {
+                reply(err);
+            }
+
+            const emailOptions = {
+                from: from,
+                to: "info@cloudvireo.com",
+                subject: `Apptivator Contact - ${from} - opted in: ${optIn}`,
+                html: rendered
+            };
+
+            server.methods.sendEmail(emailOptions, (err, response) => {
+
+                if (err) {
+                    reply(err);
+                }
+
+                reply();
+            });
+
+        });
+    }
+});

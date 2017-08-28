@@ -1,6 +1,8 @@
 import Color from 'color';
 
-const {  Platform   } = require('react-native');
+const { Platform, Dimensions } = require('react-native');
+
+let isMobile = Dimensions.get("window").width <= 720;
 
 let theme = {
     brandPrimary: '#ff5917',
@@ -20,7 +22,7 @@ let theme = {
     subtitleColor: '#8e8e93',
 
     fontSizeBase: 15,
-    titleFontSize: 17,
+    titleFontSize: 32,
     subTitleFontSize: 12,
 
     inputFontSize: 15,
@@ -197,8 +199,15 @@ theme = Object.assign(theme, {
         marginTop: "-12px"
     },
 
+    outerWrapper: { flexShrink: 1, alignItems: "stretch" },
+
     // content
-    contentContainer: { backgroundColor: '#FFFFFF', alignSelf: "center" },
+    innerWrapper: { backgroundColor: '#FFFFFF', alignSelf: "center" },
+
+    topContentWrapper: {
+        alignItems: "center", paddingTop: "45px", paddingBottom: "25px", paddingHorizontal: 15,
+        marginLeft: isMobile ? 0 : -25
+    },
 
     //// text content
     divider: {
@@ -216,8 +225,9 @@ theme = Object.assign(theme, {
     offerTitle: {
         fontWeight: "bold",
         color: "#fff",
-        fontSize: "14px",
-        textAlign: "center"
+        fontSize: "22px",
+        textAlign: "center",
+        lineHeight: "1.5"
     },
 
     offerPrice: {
@@ -246,10 +256,11 @@ theme = Object.assign(theme, {
     },
     offerDescriptionText: {
         color: "#666",
-        fontSize: "14px"
+        fontSize: 18
     },
     callToActionContainer: {
-        borderBottomWidth: 0
+        borderBottomWidth: 0,
+        fontSize: 24
     },
 
     //// contact
