@@ -167,6 +167,7 @@ class HomeTab extends Component {
             //paddingTop: "25px",
             backgroundColor: "#ecf0f1",
             paddingBottom: isMobile || isChildContainer ? 0 : 50,
+            marginBottom: isMobile ? 0 : 50,
             flexDirection: "column",
             width: "100%"
         };

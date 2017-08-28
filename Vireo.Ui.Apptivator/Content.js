@@ -27,8 +27,8 @@ export default {
             callToAction: "Start now!",
             descriptions: [
                 "One piece of content for each subscription month:",
-                "1 Standard Apple Business App - With your logo, custom content, and contact form",
-                "OR 1 Standard Landing Page - With your logo, custom content, and contact form",
+                "1 Standard Apple Business App",
+                "OR 1 Standard Landing Page",
                 "OR 1 Social Media Business Page"
             ]
         }, {
