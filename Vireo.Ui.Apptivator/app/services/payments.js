@@ -1,5 +1,5 @@
 ﻿import apiCall from "./apiCall";
-import * as appGenerator from "./appGenerator";
+import * as contactService from "./contactService";
 
 export default {
 
@@ -7,7 +7,7 @@ export default {
 
         yield apiCall("payments", "POST", { token: token, email: email });
 
-        yield appGenerator.save();
+        yield contactService.save();
     }
 
 };

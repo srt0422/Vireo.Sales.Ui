@@ -545,10 +545,10 @@ const stripe = new __WEBPACK_IMPORTED_MODULE_0_stripe__["Stripe"]("sk_test_OHx1Z
                 customer: customer.id,
             });
 
-            await __WEBPACK_IMPORTED_MODULE_2__data_collections_chargesCollection__["a" /* default */].save(charge);
+            return await __WEBPACK_IMPORTED_MODULE_2__data_collections_chargesCollection__["a" /* default */].save(charge);
         }
         catch (e) {
-            throw e;
+            throw new Error(e);
         }
     }
 });

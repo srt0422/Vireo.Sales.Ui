@@ -22,10 +22,10 @@ export default {
                 customer: customer.id,
             });
 
-            await chargesCollection.save(charge);
+            return await chargesCollection.save(charge);
         }
         catch (e) {
-            throw e;
+            throw new Error(e);
         }
     }
 };
