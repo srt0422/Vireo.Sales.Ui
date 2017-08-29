@@ -44,10 +44,12 @@
     <Compile Include="app\containers\HomeTab.js" />
     <Compile Include="app\containers\NewTodo.js" />
     <Compile Include="app\entry\index.js" />
+    <Compile Include="app\reducers\contact.js" />
     <Compile Include="app\reducers\payments.js" />
     <Compile Include="app\reducers\appContents.js" />
     <Compile Include="app\reducers\index.js" />
     <Compile Include="app\reducers\todos.js" />
+    <Compile Include="app\sagas\contact.js" />
     <Compile Include="app\sagas\payments.js" />
     <Compile Include="app\sagas\appContents.js" />
     <Compile Include="app\sagas\index.js" />
@@ -60,6 +62,7 @@
     </Compile>
     <Compile Include="app\screens\PurchaseScreen.js" />
     <Compile Include="app\services\apiCall.js" />
+    <Compile Include="app\services\contactService.js" />
     <Compile Include="app\services\appGenerator.js" />
     <Compile Include="app\services\payments.js" />
     <Compile Include="app\stories\Touchable.js" />
@@ -84,6 +87,7 @@
     <Compile Include="web\.storybook\config.js" />
     <Compile Include="web\.storybook\webpack.config.js" />
     <Compile Include="web\showip.js" />
+    <Compile Include="web\src\server\server.js" />
     <Compile Include="web\webpack.config.dev.js" />
     <Compile Include="web\webpack.config.prod.js" />
     <Content Include=".babelrc" />
@@ -92,6 +96,8 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="server\data\collections\customersCollection.js" />
+    <Content Include="web\src\client\index.html" />
+    <Content Include="web\src\server\web.config" />
     <Content Include="web\StaticApp.js" />
   </ItemGroup>
   <ItemGroup>
