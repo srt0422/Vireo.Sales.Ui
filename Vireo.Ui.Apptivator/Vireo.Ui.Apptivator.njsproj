@@ -71,6 +71,7 @@
     <Compile Include="app\themes\yayoi.js" />
     <Compile Include="Content.js" />
     <Compile Include="index.web.js" />
+    <Compile Include="server\data\collections\contactsCollection.js" />
     <Compile Include="server\data\collections\chargesCollection.js" />
     <Compile Include="server\data\collections\collection.js" />
     <Compile Include="server\data\collections\appContentsCollection.js" />

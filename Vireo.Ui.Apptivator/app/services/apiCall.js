@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-const API_HOST = process.env.API_HOST || 'http://localhost:3001/api';
+const API_HOST = process.env.API_HOST ? process.env.API_HOST + "/api" : 'http://localhost:3001/api';
 
 function getRequestArgs(obj) {
     let paramArray = [];

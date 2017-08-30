@@ -6,6 +6,8 @@ export function* addContact(action) {
 
     try {
 
+        yield call(contactService.setField, action.payload);
+
         yield call(contactService.save);
 
         yield put({

@@ -48,7 +48,7 @@ module.exports = [
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify("production"),
-            'process.env.API_HOST': JSON.stringify("http://apptivator-service.azurewebsites.net")
+            'process.env.API_HOST': JSON.stringify("https://apptivator-service.azurewebsites.net")
         }),
         new HtmlWebpackPlugin({
             filename: "index.html",
@@ -94,7 +94,8 @@ module.exports = [
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
+            'process.env.NODE_ENV': JSON.stringify('production'),
+            "process.env.GMAIL_PASS": JSON.stringify('cxgskhqaoaqpnqzj')
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin()

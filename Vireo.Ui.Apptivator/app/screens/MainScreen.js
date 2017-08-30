@@ -81,7 +81,7 @@ class MainScreen extends Component {
                     onPress={() => this.props.navigator.push({ index: "contact" })}
                     iconColor={theme.grey}
                     selectedIconColor={theme.brandPrimary}>
-                    <ContactTab onSubmit={this.submit.bind(this)} />
+                    <ContactTab product={this.props.path} onSubmit={this.submit.bind(this)} />
                 </Icon.TabBarItem>
                 {/*
                 <Icon.TabBarItem

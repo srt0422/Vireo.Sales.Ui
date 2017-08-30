@@ -13,7 +13,7 @@ const commonLoaders = [
 ];
 
 module.exports = [
-        {
+    {
         name: "client-side rendering",
         devtool: 'cheap-eval-source-map',
         devServer: {
@@ -57,7 +57,8 @@ module.exports = [
         plugins: [
             new webpack.DefinePlugin({
                 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-                'process.env.API_HOST': JSON.stringify('http://localhost:3001/api')
+                'process.env.API_HOST': JSON.stringify('http://localhost:3001'),
+                "process.env.GMAIL_PASS": 'elacxcepehrpordh'
             }),
             new HtmlWebpackPlugin({
                 filename: "index.html",
@@ -77,7 +78,7 @@ module.exports = [
             },
             extensions: [".jsx", ".js", ".web.js", ".gif", ".jpeg", ".png", ".svg"]
         }
-    }, 
+    },
     {
         // The configuration for the server-side rendering
         name: "server-side rendering",

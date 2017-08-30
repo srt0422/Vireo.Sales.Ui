@@ -79,7 +79,8 @@ theme: vireo
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://vireoblogftp@vireoblog.scm.azurewebsites.net:443/vireoblog.git
+  repo: https://apptivatorftp@vireo-blog.scm.azurewebsites.net:443/vireo-blog.git
+  |"/`12345678"
   branch: master
   message: local deployment
 

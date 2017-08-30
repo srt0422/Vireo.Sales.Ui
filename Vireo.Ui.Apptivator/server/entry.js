@@ -1,6 +1,6 @@
 import * as Hapi from "hapi";
 import paymentService from "./services/paymentService";
-import { chargesCollection, customersCollection, appContentsCollection } from "./data/collections";
+import { chargesCollection, customersCollection, appContentsCollection, contactsCollection } from "./data/collections";
 import nodemailer from "nodemailer";
 
 const rootRoute = "/api";
@@ -39,7 +39,7 @@ server.register([{
             port: 465,
             auth: {
                 user: 'vireo.development@gmail.com',
-                pass: 'elacxcepehrpordh'
+                pass: process.env.GMAIL_PASS
             },
             tls: {
                 secureProtocol: "TLSv1_method"
@@ -163,96 +163,105 @@ const getDirectories = source => readdirSync(source).map(name => join(source, na
 server.route({
     method: 'POST',
     path: `${rootRoute}/email`,
-    handler: function (request, reply) {
+    handler: {
+        async await(request, reply) {
 
-        const { from, email, message } = request.payload;
+            const { from, email, message } = request.payload;
 
-        server.render("email", { message }, function (err, rendered, config) {
+            server.render("email", { message }, function (err, rendered, config) {
 
-            if (err) {
-                reply(err);
-            }
-
-            const emailOptions = {
-                from: from,
-                to: email,
-                subject: 'Mobile App Contact',
-                html: rendered
-            };
-
-            server.methods.sendEmail(emailOptions, (err, response) => {
-                debugger;
                 if (err) {
                     reply(err);
+                    return;
                 }
 
-                reply();
-            });
+                const emailOptions = {
+                    from: from,
+                    to: email,
+                    subject: 'Mobile App Contact',
+                    html: rendered
+                };
 
-        });
+                server.methods.sendEmail(emailOptions, (err, response) => {
+                    if (err) {
+                        reply(err);
+                        return;
+                    }
+
+                    reply().code(201);
+                });
+
+            });
+        }
     }
 });
 
 server.route({
     method: 'GET',
     path: `${rootRoute}/email`,
-    handler: function (request, reply) {
+    handler: {
+        async await(request, reply) {
 
-        server.render("email", { message: "test contact message" }, function (err, rendered, config) {
-
-            if (err) {
-                reply(err);
-            }
-
-            const emailOptions = {
-                from: "info@cloudvireo.com",
-                to: "srt0422@gmail.com",
-                subject: 'Mobile App Contact',
-                html: rendered
-            };
-
-            server.methods.sendEmail(emailOptions, (err, response) => {
+            server.render("email", { message: "test contact message" }, function (err, rendered, config) {
 
                 if (err) {
                     reply(err);
                 }
 
-                reply();
-            });
+                const emailOptions = {
+                    from: "vireo.development@gmail.com",
+                    to: "srt0422@gmail.com",
+                    subject: 'Mobile App Contact',
+                    html: rendered
+                };
 
-        });
+                server.methods.sendEmail(emailOptions, (err, response) => {
+
+                    if (err) {
+                        reply(err);
+                    }
+
+                    reply();
+                });
+
+            });
+        }
     }
 });
 
 server.route({
     method: 'POST',
     path: `${rootRoute}/contact`,
-    handler: function (request, reply) {
+    handler: {
+        async await(request, reply) {
 
-        const { from, email, message, optIn, product } = request.payload;
+            await contactsCollection.save(request.payload);
 
-        server.render("email", { message }, function (err, rendered, config) {
+            const { from, email, message, optIn, product } = request.payload;
 
-            if (err) {
-                reply(err);
-            }
-
-            const emailOptions = {
-                from: from,
-                to: "info@cloudvireo.com",
-                subject: `Apptivator Contact - ${from} - requested product ${product} - opted in: ${optIn}`,
-                html: rendered
-            };
-
-            server.methods.sendEmail(emailOptions, (err, response) => {
+            server.render("email", { message }, function (err, rendered, config) {
 
                 if (err) {
                     reply(err);
                 }
 
-                reply();
-            });
+                const emailOptions = {
+                    from: from,
+                    to: "vireo.development@gmail.com",
+                    subject: `Apptivator Contact - ${from} - requested product: ${product} - opted in: ${optIn}`,
+                    html: rendered
+                };
 
-        });
+                server.methods.sendEmail(emailOptions, (err, response) => {
+
+                    if (err) {
+                        reply(err);
+                    }
+
+                    reply();
+                });
+
+            });
+        }
     }
 });
