@@ -18,6 +18,9 @@
             <%- post.content %>
             <% } %>
         </div>
+        <div>
+            <%- partial('ad') %>
+        </div>
         <footer class="article-footer">
             <a data-url="<%- post.permalink %>" data-id="<%= post._id %>" class="article-share-link"><%= __('share') %></a>
             <% if (post.comments && config.disqus_shortname){ %>
@@ -29,14 +32,13 @@
         <div class="article-meta">
             <%- partial('post/date', {class_name: 'article-date', date_format: null}) %>
             <%- partial('post/category') %>
-        </div> 
-    </div> 
+        </div>
+    </div>
 
     <% if (!index){ %>
     <%- partial('post/nav') %>
     <% } %>
 </article>
-
 <% if (!index && post.comments && config.disqus_shortname){ %>
 <section id="comments">
     <div id="disqus_thread">

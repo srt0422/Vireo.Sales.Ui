@@ -12,9 +12,10 @@ timezone: America/Los_Angeles
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blog.cloudvireo.com
+url: http://localhost:4000
+#http://blog.cloudvireo.com
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :year/:month/:day/:title/?
 permalink_defaults:
 
 # Directory
@@ -94,3 +95,8 @@ admin:
   username: vireo
   password_hash: $2a$10$RBlsnFtLGnbAM.iGVpw.7OIA67MzdpNfCKByzu3y8vgF7LJ7ksJVq
   secret: fuzzy wuzzy wuz a bear
+
+  #disqus comments
+  disqus_shortname: blog-cloudvireo-com
+
+  # redirects
