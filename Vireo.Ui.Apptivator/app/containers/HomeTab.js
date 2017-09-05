@@ -195,6 +195,7 @@ class HomeTab extends Component {
 
         return {
             ...commonStyles,
+            width: "auto",
             flexDirection: "row",
             alignItems: "baseline",
             paddingHorizontal: 50

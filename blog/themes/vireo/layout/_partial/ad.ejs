@@ -1,0 +1,166 @@
+<style>
+    .btn[role="button"]:before {
+        content: "";
+        vertical-align: middle;
+        height: 100%;
+        display: inline-block;
+    }
+
+    .btn {
+        color: inherit;
+        cursor: default;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        white-space: pre;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .btn {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+
+    /* Reset `button` and button-style `input` default styles */
+    .btn {
+        background: none;
+        border: 0;
+        color: inherit;
+        /* cursor: default; */
+        font: inherit;
+        line-height: normal;
+        overflow: visible;
+        padding: 0;
+        -webkit-appearance: button; /* for input */
+        -webkit-user-select: none; /* for button */
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+        .btn::-moz-focus-inner {
+            border: 0;
+            padding: 0;
+        }
+
+
+    /* Demo */
+    .btn {
+        background-color: #02d31d;
+        border-color: #02d31d;
+        border-radius: 0.25em;
+        height: 3.5em;
+        line-height: 2.5;
+        /*margin: 0.25em;*/
+        margin: 0;
+        /*padding: 0 1em;*/
+        width: 100%;
+        color: white;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .ad-container.hide {
+        display: none;
+    }
+
+    .cell {
+        display: block;
+        padding: 25px;
+    }
+
+    .copy-container {
+        /*width: 35%;*/
+        /*height: 100%;*/
+        /*vertical-align: middle;*/
+        text-align: center;
+        padding-top: 0px;
+        /*padding-left: 25px;*/
+    }
+
+        .copy-container > * {
+            display: inline-block;
+        }
+
+        .copy-container .copy {
+            padding-bottom: 35px;
+            font-size: 1.5em;
+            line-height: 2em;
+            font-weight: bold;
+        }
+
+    @media (min-width: 780px) {
+
+        .ad-container {
+            text-align: center;
+        }
+
+        .cell {
+            display: inline-block;
+            width: 42%;
+            vertical-align: middle;
+        }
+
+        .copy-container {
+            padding-top: 25px;
+        }
+    }
+</style>
+
+<div class="ad-container hide" id="app_ad">
+    <div class="cell">
+        <img src="/images/vireo.jpg" style="width:100%" />
+    </div>
+    <div class="cell copy-container">
+        <div class="copy">Now only $100 for your first business app!</div>
+        <a role="button" href="http://vireo.biz" class="btn">Learn More</a>
+    </div>
+</div>
+
+<div class="ad-container hide" id="social_media_marketing_ad">
+    <div class="cell copy-container">
+        <div class="copy">
+            <div>Limited time deal!</div>
+            <div>Low cost social media marketing!</div>
+        </div>
+        <a role="button" href="http://vireo.biz" class="btn">Learn More</a>
+    </div>
+    <div class="cell">
+        <img src="/images/vireo.jpg" style="width:100%" />
+    </div>
+</div>
+
+<script>
+    var queries = location.search
+        .substring(1)
+        .split("&")
+        .map(function (it) {
+
+            var query = {};
+            var keyValuePair = it.split("=");
+
+            query[keyValuePair[0]] = keyValuePair[1];
+
+            return query;
+        });
+
+    if (queries.length > 0) {
+
+        switch (queries[0].v)
+        {
+            case "app":
+
+                app_ad.classList.remove("hide")
+
+                break;
+
+            case "smm":
+
+                social_media_marketing_ad.classList.remove("hide")
+
+                break;
+        }
+    }
+</script>

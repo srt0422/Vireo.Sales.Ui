@@ -59,7 +59,7 @@ class Checkout extends Component {
                         }}>
                             <CardItem style={theme.checkoutHeader}>
                                 <H2 style={{ ...theme.checkoutHeaderText, textAlign: "left", lineHeight: "36px" }}>
-                                    Success!  You've successfully submitted your app request!  We will be in touch shortly to notify you of the progress of your app.
+                                    Success!  You've successfully submitted your request!  We will be in touch shortly to notify you of the progress of your app.
                                 </H2>
                             </CardItem>
                         </Card>

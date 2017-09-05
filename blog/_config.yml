@@ -80,7 +80,6 @@ theme: vireo
 deploy:
   type: git
   repo: https://apptivatorftp@vireo-blog.scm.azurewebsites.net:443/vireo-blog.git
-  |"/`12345678"
   branch: master
   message: local deployment
 

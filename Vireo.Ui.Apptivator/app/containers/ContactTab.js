@@ -13,7 +13,8 @@ import {
     Content,
     Card,
     CardItem,
-    CheckBox
+    CheckBox,
+    H2
 } from 'native-base';
 
 const { Text, RefreshControl, Image, Dimensions, Linking } = require('react-native');
@@ -55,6 +56,25 @@ class ContactTab extends Component {
         }
         else if (this.state.showTerms) {
             return (<TermsOfService onBackButtonPress={() => this.setState({ showTerms: false })} />);
+        }
+        else if (this.state.showContactSuccess) {
+            return (
+                <Card style={{
+                    width: "100%",
+                    maxWidth: "500px",
+                    marginHorizontal: "auto",
+                    marginVertical: "50px"
+                }}>
+                    <CardItem style={theme.checkoutHeader}>
+                        <H2 style={{ ...theme.checkoutHeaderText, textAlign: "left", lineHeight: "36px" }}>
+                            Success!  You've successfully submitted your request!  We will be in touch shortly.
+                                </H2>
+                    </CardItem>
+                    <CardItem>
+                        <Button info onPress={() => this.setState({ showContactSuccess: false })}>Submit New Request</Button>
+                    </CardItem>
+                </Card>
+            );
         }
         else {
             return (
@@ -220,7 +240,11 @@ class ContactTab extends Component {
                 }
             });
 
-            this.props.onSubmit();
+            if (this.props.product === "home" || this.props.product === "contact") {
+                this.setState({ showContactSuccess: true });
+            } else {
+                this.props.onSubmit();
+            }
         }
     }
 }
