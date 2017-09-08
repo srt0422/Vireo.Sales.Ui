@@ -188,7 +188,8 @@ let theme = {
 
 };
 
-theme = Object.assign(theme, {
+theme = {
+    ...theme,
 
     // header
 
@@ -281,15 +282,50 @@ theme = Object.assign(theme, {
         color: "#fff"
     },
 
-    OnExitContainer: {
+    onExitWrapper: {
         position: "absolute",
         top: "15%",
-        bottom: "15%",
         left: "5%",
         right: "5%",
+        bottom: "15%",
         backgroundColor: "rgba(255, 255, 255, .96)",
-        border: "1px solid black"
+        border: "1px solid rgb(26, 188, 156)",
+        borderWidth: 1,
+        padding: 25,
+        alignItems: "left",
+        overflow: "auto"
+    },
+
+    onExitContainer: {
+        alignItems: "left",
+        //flexDirection: "row"
+    },
+
+    onExitFoundInquiryAnswerContainer: {
+        //alignSelf: "center",
+        alignItems: "left",
+        flexDirection: "row",
+        padding: 15,
+        paddingLeft: 0
+    },
+
+    onExitQuestionText: {
+        lineHeight: "2",
+        fontSize: 28,
+        color: "rgb(22, 160, 133)"
+    },
+
+    onExitRadioButton: {
+        paddingHorizontal: 5,
+        cursor: "pointer"
+    },
+
+    onExitRadioButtonLabel: {
+        paddingHorizontal: 5,
+        fontSize: 24,
+        color: "rgb(22, 160, 133)",
+        cursor: "pointer"
     }
-});
+};
 
 export default theme;

@@ -211,8 +211,10 @@ class ContactTab extends Component {
         this.props.dispatch({
             type: 'contact/set',
             payload: {
-                name: e.target.name,
-                value: e.target.value
+                product: {
+                    name: e.target.name,
+                    value: e.target.value
+                }
             }
         });
     }

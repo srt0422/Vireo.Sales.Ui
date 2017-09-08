@@ -5,7 +5,7 @@ import MainScreen from './MainScreen';
 import PurchaseScreen from './PurchaseScreen';
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsOfService from "./TermsOfService";
-import { OnExit } from "../Containers";
+import { OnExit } from "../containers";
 
 
 function renderScene(route, navigator) {
