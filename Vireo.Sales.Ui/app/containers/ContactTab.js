@@ -211,10 +211,8 @@ class ContactTab extends Component {
         this.props.dispatch({
             type: 'contact/set',
             payload: {
-                product: {
-                    name: e.target.name,
-                    value: e.target.value
-                }
+                name: e.target.name,
+                value: e.target.value
             }
         });
     }
@@ -237,8 +235,7 @@ class ContactTab extends Component {
 
             this.props.dispatch({
                 type: 'contact/add', payload: {
-                    name: "product",
-                    value: this.props.product
+                    product: this.props.product
                 }
             });
 

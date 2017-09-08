@@ -108,12 +108,9 @@ class OnExit extends Component {
 
         this.props.dispatch({
             type: 'contact/add', payload: {
-                product: {
-                    name: "product",
-                    value: "exit_redirect"
-                },
-                optIn: false,
-
+                product: "exit_redirect",
+                found: this.state.found,
+                optIn: false
             }
         });
 
