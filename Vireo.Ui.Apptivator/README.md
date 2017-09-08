@@ -1,3 +1,0 @@
-﻿# Vireo.Ui.Apptivator
-
-
