@@ -75,9 +75,6 @@ export default {
         [{
             title: "Premium Online Marketing Management",
             offerKey: "premium_marketing_management",
-            priceDollars: "",
-            priceCents: "",
-            subscriptionPeriod: "",
             callToAction: "Contact Us",
             descriptions: [
                 "Comprehensive digital marketing tailored for your business."

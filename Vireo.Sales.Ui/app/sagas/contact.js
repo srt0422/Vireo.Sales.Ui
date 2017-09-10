@@ -6,11 +6,11 @@ export function* addContact(action) {
 
     try {
 
-        if (typeof action.payload.optIn !== "undefined") {
-            yield call(contactService.setField, { name: "optIn", value: action.payload.optIn });
+        if (action.payload) {
+            for (var payLoadKey in action.payload) {
+                yield call(contactService.setField, { name: payLoadKey, value: action.payload[payLoadKey] });
+            }
         }
-
-        yield call(contactService.setField, action.payload.product);
 
         yield call(contactService.save);
 

@@ -12,8 +12,9 @@
     "server-debug": "node inspect web/src/server/server.js",
     "dev": "start yarn build-dev&& start yarn server-dev&& start mongod --dbpath=/mongodata && webpack-dev-server --config web/webpack.config.dev.js --colors --inline --hot",
     "build-dev": "webpack --config web/webpack.config.dev.js --progress  --colors -w",
-    "build": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env NODE_ENV=production API_HOST=https://apptivator-service.azurewebsites.net/api webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
-    "test": "mocha --compilers js:babel-register --require babel-polyfill --recursive app/**/__tests__/*.js server/**/__tests__/*.js",
+    "build-rc": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env NODE_ENV=production API_HOST=https://apptivator-rc.azurewebsites.net webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
+    "build": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env NODE_ENV=production API_HOST=https://apptivator-service.azurewebsites.net webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
+   "test": "mocha --compilers js:babel-register --require babel-polyfill --recursive app/**/__tests__/*.js server/**/__tests__/*.js",
     "test:watch": "npm test -- --watch",
     "lint": "eslint app/**/*.js"
   },
