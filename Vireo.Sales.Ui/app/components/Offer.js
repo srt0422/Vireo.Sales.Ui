@@ -16,7 +16,7 @@ export default (props) => <View style={{
     }} className="panel-heading">
         <Text style={props.theme.offerTitle}>{props.title}</Text>
     </View>
-    <View style={props.theme.offerPrice} className="panel-body">
+    {props.priceDollars ? <View style={props.theme.offerPrice} className="panel-body">
         <Text style={{
             fontSize: "45px",
             color: "#fff",
@@ -35,7 +35,7 @@ export default (props) => <View style={{
                 whiteSpace: "noWrap"
             }} className="price-month">{props.subscriptionPeriod}</Text>
         </Text>
-    </View>
+    </View> : ""}
     <List style={{
         backgroundColor: "#fafafa"
     }} className="list-group">
