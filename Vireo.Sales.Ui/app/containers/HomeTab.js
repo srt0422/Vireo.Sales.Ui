@@ -25,32 +25,6 @@ class HomeTab extends Component {
         todos: React.PropTypes.object
     };
 
-    componentDidMount() {
-        const { dispatch } = this.props;
-        dispatch({
-            type: 'todos/get'
-        });
-    }
-
-    //componentWillMount() {
-    //    Icon = require('react-native-vector-icons/Ionicons').default;
-    //}
-
-    handleNewBtnPress() {
-        this.context.navigator.push({
-            index: 1,
-            title: 'New Todo'
-        });
-    }
-
-    handleDeleteTodo(todo) {
-        const { dispatch } = this.props;
-        dispatch({
-            type: 'todos/delete',
-            todo
-        });
-    }
-
     render() {
         return (
             <Container style={{ height: Dimensions.get("window").height - 50 }} theme={theme}>
