@@ -4,7 +4,6 @@ import { View, Dimensions, Platform, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import theme from '../themes/banzhow';
 import Contents from "../../Content";
-
 import { Offer } from "../components";
 
 class OnExit extends Component {
