@@ -219,6 +219,8 @@ class ContactTab extends Component {
 
     onSendClick() {
 
+        const product = this.props.content.product || this.props.product;
+
         if (!!window) {
             fbq('track', 'InitiateCheckout');
         }
@@ -235,11 +237,13 @@ class ContactTab extends Component {
 
             this.props.dispatch({
                 type: 'contact/add', payload: {
-                    product: this.props.product
+                    product: product
                 }
             });
 
-            if (this.props.product === "home" || this.props.product === "contact") {
+
+
+            if (product === "home" || product === "contact") {
                 this.setState({ showContactSuccess: true });
             } else {
                 this.props.onSubmit();

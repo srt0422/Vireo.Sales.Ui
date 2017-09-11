@@ -298,6 +298,7 @@ theme = {
 
     onExitContainer: {
         alignItems: "left",
+        marginTop: 25
         //flexDirection: "row"
     },
 
