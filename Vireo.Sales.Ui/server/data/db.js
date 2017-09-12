@@ -1,6 +1,6 @@
 ﻿import { MongoClient } from "mongodb";
 
-const url = process.env.NODE_ENV === "production" ? 'mongodb://vireo:Michelle123@13.64.196.248:27017/vireo' : 'mongodb://localhost:27017/apptivator';
+const url = process.env.NODE_ENV === "production" ? 'mongodb://vireo:Michelle123@13.91.111.252:27017/vireo' : 'mongodb://localhost:27017/apptivator';
 
 let db = null;
 
