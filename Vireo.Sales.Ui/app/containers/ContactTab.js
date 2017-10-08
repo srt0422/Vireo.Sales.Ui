@@ -79,7 +79,7 @@ class ContactTab extends Component {
         else {
             return (
                 <Container style={{ height: Dimensions.get("window").height - 50 }} theme={theme}>
-                    <Header>
+                    <Header onClick={() => this.props.goHome()}>
                         <Button transparent>
                             <Image source={Contents.companyLogoUrl}
                                 style={{

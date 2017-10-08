@@ -63,13 +63,13 @@ class MainScreen extends Component {
                     title="Home"
                     iconName="ios-home-outline"
                     selectedIconName="ios-home"
-                    selected={this.props.path === "home"}
+                    selected={this.props.path === "home" || this.props.path === "app_builder"}
                     onPress={() => this.props.navigator.push({ index: "home" })}
                     iconColor={theme.grey}
                     selectedIconColor={theme.brandPrimary}
                     style={{ flex: 1 }}>
-                    <HomeTab
-                        onCallToAction={this.callToAction.bind(this)} />
+
+                    <HomeTab onCallToAction={this.callToAction.bind(this)} goHome={() => this.props.navigator.push({ index: "home" })} />
 
                 </Icon.TabBarItem>
 
@@ -77,11 +77,13 @@ class MainScreen extends Component {
                     title="Contact"
                     iconName="ios-paperplane-outline"
                     selectedIconName="ios-paperplane"
-                    selected={this.props.path !== "home"}
+                    selected={this.props.path !== "home" && this.props.path !== "app_builder"}
                     onPress={() => this.props.navigator.push({ index: "contact" })}
                     iconColor={theme.grey}
                     selectedIconColor={theme.brandPrimary}>
-                    <ContactTab product={this.props.path} onSubmit={this.submit.bind(this)} />
+
+                    <ContactTab product={this.props.path} onSubmit={this.submit.bind(this)} goHome={() => this.props.navigator.push({ index: "home" })} />
+
                 </Icon.TabBarItem>
                 {/*
                 <Icon.TabBarItem

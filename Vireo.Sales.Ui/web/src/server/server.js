@@ -577,7 +577,7 @@ module.exports = require("stripe");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongodb___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mongodb__);
 ﻿
 
-const url = process.env.NODE_ENV === "production" ? 'mongodb://apptivator:5ZAmXndm3JPqYLRKFtULq5FviVbA2palr2kTlWMVqDVw9eEGBUUZCAOOzhAeJxlT0T6mhEBHxWgqH1T8lTLhNQ==@apptivator.documents.azure.com:10255/apptivator?ssl=true&replicaSet=globaldb' : 'mongodb://localhost:27017/apptivator';
+const url = process.env.NODE_ENV === "production" ? 'mongodb://vireo:Michelle123@13.91.111.252:27017/vireo' : 'mongodb://localhost:27017/apptivator';
 
 let db = null;
 

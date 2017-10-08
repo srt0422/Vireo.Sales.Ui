@@ -38,6 +38,9 @@
     <Compile Include="app\components\Offer.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\config\sites\mobile-app-builder.js" />
+    <Compile Include="app\config\sites\mobile-dev.js" />
+    <Compile Include="app\config\sites\smm.js" />
     <Compile Include="app\containers\Checkout.js" />
     <Compile Include="app\containers\AppBuilder.js" />
     <Compile Include="app\containers\ContactTab.js" />
@@ -55,6 +58,7 @@
     <Compile Include="app\sagas\payments.js" />
     <Compile Include="app\sagas\appContents.js" />
     <Compile Include="app\sagas\index.js" />
+    <Compile Include="app\screens\AppBuilder.js" />
     <Compile Include="app\screens\index.js" />
     <Compile Include="app\screens\MainScreen.js" />
     <Compile Include="app\screens\NewTodoScreen.js" />
@@ -100,6 +104,34 @@
     <Content Include="README.md" />
     <Content Include="server\data\collections\customersCollection.js" />
     <Content Include="web\src\client\index.html" />
+    <Content Include="web\src\server\views\contact\email.html" />
+    <Content Include="web\src\server\views\contact\images\article01.jpg" />
+    <Content Include="web\src\server\views\contact\images\article02.jpg" />
+    <Content Include="web\src\server\views\contact\images\article03.jpg" />
+    <Content Include="web\src\server\views\contact\images\article04.jpg" />
+    <Content Include="web\src\server\views\contact\images\banner - Copy %282%29.jpg" />
+    <Content Include="web\src\server\views\contact\images\banner - Copy.jpg" />
+    <Content Include="web\src\server\views\contact\images\banner.jpg" />
+    <Content Include="web\src\server\views\contact\images\banner_tmpl.jpg" />
+    <Content Include="web\src\server\views\contact\images\facebook - Copy - Copy.png" />
+    <Content Include="web\src\server\views\contact\images\facebook - Copy.png" />
+    <Content Include="web\src\server\views\contact\images\facebook.png" />
+    <Content Include="web\src\server\views\contact\images\facebook01.png" />
+    <Content Include="web\src\server\views\contact\images\facebook02.png" />
+    <Content Include="web\src\server\views\contact\images\google.png" />
+    <Content Include="web\src\server\views\contact\images\google01.png" />
+    <Content Include="web\src\server\views\contact\images\google02.png" />
+    <Content Include="web\src\server\views\contact\images\logo.png" />
+    <Content Include="web\src\server\views\contact\images\logo_tmpl.png" />
+    <Content Include="web\src\server\views\contact\images\picture.png" />
+    <Content Include="web\src\server\views\contact\images\picture01.jpg" />
+    <Content Include="web\src\server\views\contact\images\picture02.jpg" />
+    <Content Include="web\src\server\views\contact\images\template.jpg" />
+    <Content Include="web\src\server\views\contact\images\twitter.png" />
+    <Content Include="web\src\server\views\contact\images\twitter01.png" />
+    <Content Include="web\src\server\views\contact\images\twitter02.png" />
+    <Content Include="web\src\server\views\contact\images\white-bg.gif" />
+    <Content Include="web\src\server\views\email.html" />
     <Content Include="web\src\server\web.config" />
     <Content Include="web\StaticApp.js" />
   </ItemGroup>
@@ -109,8 +141,10 @@
     <Folder Include="app\components\" />
     <Folder Include="app\components\FileInput\" />
     <Folder Include="app\components\Link\" />
+    <Folder Include="app\config\sites\" />
     <Folder Include="app\containers\" />
     <Folder Include="app\entry\" />
+    <Folder Include="app\config\" />
     <Folder Include="app\reducers\" />
     <Folder Include="app\reducers\__tests__\" />
     <Folder Include="app\sagas\" />
@@ -131,6 +165,9 @@
     <Folder Include="web\src\" />
     <Folder Include="web\src\server\" />
     <Folder Include="web\src\client\" />
+    <Folder Include="web\src\server\views\" />
+    <Folder Include="web\src\server\views\contact\" />
+    <Folder Include="web\src\server\views\contact\images\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

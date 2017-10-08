@@ -5,6 +5,7 @@ import MainScreen from './MainScreen';
 import PurchaseScreen from './PurchaseScreen';
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsOfService from "./TermsOfService";
+import AppBuilder from "./AppBuilder";
 import { OnExit } from "../containers";
 
 
@@ -25,6 +26,8 @@ function getScene(route, navigator) {
             return (<PrivacyPolicy navigator={navigator} />);
         case 3:
             return (<TermsOfService navigator={navigator} />);
+        case "app_builder":
+            return (<AppBuilder navigator={navigator} />)
         default:
             return (<MainScreen path={route.index} navigator={navigator} />);
     }

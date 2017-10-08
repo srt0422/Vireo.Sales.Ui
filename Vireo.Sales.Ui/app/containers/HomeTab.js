@@ -28,7 +28,7 @@ class HomeTab extends Component {
     render() {
         return (
             <Container style={{ height: Dimensions.get("window").height - 50 }} theme={theme}>
-                <Header>
+                <Header onClick={() => this.props.goHome()}>
                     <Button transparent>
                         <Image source={Contents.companyLogoUrl}
                             style={theme.logoImage} />
@@ -74,11 +74,11 @@ class HomeTab extends Component {
                             lineHeight: "2"
                         }}>{Contents.homeContent}</Text>
                     </View>
-                    <View style={{ ...this.getOfferContainerStyle(), flexDirection: "column", alignItems: "center" }} className="col-sm-3 price-group">
+                    <View style={{ ...this.getOfferContainerStyle(false, true), flexDirection: "column", alignItems: "center" }} className="col-sm-3 price-group">
                         {Contents.offers.map((offer, i) => {
                             if (offer.length) {
                                 return (
-                                    <View style={this.getOfferContainerStyle(true)} key={i}>
+                                    <View style={this.getOfferContainerStyle(true, i < offer.length - 1)} key={i}>
                                         {offer.map((childOffer, cIndex) => {
                                             return (
                                                 <View style={this.getOfferStyle(cIndex, offer)} key={cIndex}>
@@ -143,7 +143,7 @@ class HomeTab extends Component {
         return style;
     }
 
-    getOfferContainerStyle(isChildContainer) {
+    getOfferContainerStyle(isChildContainer, isLast) {
 
         let windowWidth = Dimensions.get("window").width;
         let isMobile = windowWidth <= 720;
@@ -154,7 +154,7 @@ class HomeTab extends Component {
             //paddingTop: "25px",
             backgroundColor: "#ecf0f1",
             paddingBottom: isMobile || isChildContainer ? 0 : 50,
-            marginBottom: isMobile ? 0 : 50,
+            marginBottom: isMobile && !isLast ? 0 : 50,
             flexDirection: "column",
             width: "100%"
         };

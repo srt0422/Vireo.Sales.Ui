@@ -56,6 +56,7 @@ module.exports = [
         },
         plugins: [
             new webpack.DefinePlugin({
+                "process.env.SITE_NAME": JSON.stringify(process.env.SITE_NAME),
                 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
                 'process.env.API_HOST': JSON.stringify('http://localhost:3001'),
                 "process.env.GMAIL_PASS": 'elacxcepehrpordh'
