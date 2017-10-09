@@ -48,8 +48,8 @@ module.exports = [
         plugins: [
             new webpack.DefinePlugin({
                 'process.env.NODE_ENV': JSON.stringify("production"),
-                'process.env.API_HOST': JSON.stringify(process.env.API_HOST,
-                "process.env.SITE_NAME": JSON.stringify(process.env.SITE_NAME),
+                'process.env.API_HOST': JSON.stringify(process.env.API_HOST),
+                'process.env.SITE_NAME': JSON.stringify(process.env.SITE_NAME)
         }),
             new HtmlWebpackPlugin({
                 filename: "index.html",
