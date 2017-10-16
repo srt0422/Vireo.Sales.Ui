@@ -47,14 +47,15 @@ module.exports = [
         },
         plugins: [
             new webpack.DefinePlugin({
-                'process.env.NODE_ENV': JSON.stringify("production"),
+                'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || "production"),
                 'process.env.API_HOST': JSON.stringify(process.env.API_HOST),
                 'process.env.SITE_NAME': JSON.stringify(process.env.SITE_NAME)
         }),
             new HtmlWebpackPlugin({
                 filename: "index.html",
                 pkg: pkg,
-                template: path.join(__dirname, "../app/index.template.html")
+                template: path.join(__dirname, "../app/index.template.html"),
+                environment: process.env.NODE_ENV || 'production'
             }),
             new webpack.optimize.OccurrenceOrderPlugin(),
             //new webpack.optimize.UglifyJsPlugin()
