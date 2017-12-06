@@ -4,7 +4,7 @@
   "description": "Generates cross platform mobile apps using the vireo.ui.apptivator.template and filling it with content in Content.js.",
   "main": "server.js",
   "engines": {
-    "node": "7.7.x"
+    "node": "8.0.0"
   },
   "scripts": {
     "start": "node server.js",
