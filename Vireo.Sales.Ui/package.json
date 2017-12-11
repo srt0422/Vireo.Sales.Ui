@@ -20,12 +20,12 @@ build - ui - apptivator - dev {
     "build-ui-dev": "webpack --config web/webpack.config.dev.js --progress  --colors -w",
     "build-server-dev": "webpack --config web/webpack.config.server.dev.js --progress  --colors -w",
 
-    "build-ui-smm-rc": "SET API_HOST=https://apptivator-rc-new.azurewebsites.net&& npm run build-ui-smm",
-    "build-ui-apptivator-rc": "SET API_HOST=https://apptivator-rc-new.azurewebsites.net&& npm run build-ui-apptivator",
+    "build-ui-smm-rc": "SET API_HOST=http://apptivator-rc-new.azurewebsites.net&& npm run build-ui-smm",
+    "build-ui-apptivator-rc": "SET API_HOST=http://apptivator-rc-new.azurewebsites.net&& npm run build-ui-apptivator",
 
     "build-ui-smm": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env SITE_NAME=smm NODE_ENV=production webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
-    "build-ui-apptivator": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env SITE_NAME=mobile-app-builder NODE_ENV=production API_HOST=https://apptivator-rc-new.azurewebsites.net webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
-    "build-server-vireo_api": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env NODE_ENV=production API_HOST=https://apptivator-rc-new.azurewebsites.net webpack --config web/webpack.config.server.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
+    "build-ui-apptivator": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env SITE_NAME=mobile-app-builder NODE_ENV=production webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
+    "build-server-vireo_api": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env NODE_ENV=production webpack --config web/webpack.config.server.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
 
     "test": "mocha --compilers js:babel-register --require babel-polyfill --recursive app/**/__tests__/*.js server/**/__tests__/*.js",
     "test:watch": "npm test -- --watch",
