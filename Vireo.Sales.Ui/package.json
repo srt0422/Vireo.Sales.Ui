@@ -1,4 +1,4 @@
-{
+build - ui - apptivator - dev {
   "name": "vireo.ui.apptivator",
   "version": "0.0.1",
   "description": "Generates cross platform mobile apps using the vireo.ui.apptivator.template and filling it with content in Content.js.",
@@ -8,17 +8,25 @@
   },
   "scripts": {
     "start": "node server.js",
-    "server-dev": "cd web/src/server & node --inspect server.js",
-    "server-debug": "node inspect web/src/server/server.js",
-    "dev": "start npm run build-dev-smm&& start npm run server-dev&& start mongod --dbpath=/mongodata&& npm run client-dev",
-    "client-dev": "cross-env SITE_NAME=smm webpack-dev-server --config web/webpack.config.dev.js --colors --inline --hot",
-    "dev-mobile-app-builder": "start npm run build-dev-mobile-app-builder&& start npm run server-dev&& start mongod --dbpath=/mongodata && cross-env SITE_NAME=mobile-app-builder webpack-dev-server --config web/webpack.config.dev.js --colors --inline --hot",
-    "build-dev-smm": "cross-env SITE_NAME=smm webpack --config web/webpack.config.dev.js --progress  --colors -w",
-    "build-dev-mobile-dev": "cross-env SITE_NAME=mobile-dev webpack --config web/webpack.config.dev.js --progress  --colors -w",
-    "build-dev-mobile-app-builder": "cross-env SITE_NAME=mobile-app-builder webpack --config web/webpack.config.dev.js --progress  --colors -w",
-    "build-rc": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env NODE_ENV=production API_HOST=https://apptivator-rc-new.azurewebsites.net webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
-    "build-rc-mobile-app-builder": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env SITE_NAME=mobile-app-builder NODE_ENV=production API_HOST=https://apptivator-rc-new.azurewebsites.net webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
-    "build": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env NODE_ENV=production API_HOST=https://apptivator-rc-new.azurewebsites.net webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
+
+    "debug-server": "node inspect web/src/server/server.js",
+
+    "start-server-dev": "cd web/src/server & node --inspect server.js",
+    "start-ui-dev": "cross-env webpack-dev-server --config web/webpack.config.dev.js --colors --inline --hot",
+
+    "build-all-smm-dev": "SET SITE_NAME=smm&& start npm run build-ui-dev&& start npm run build-server-dev&& start npm run start-server-dev&& start mongod --dbpath=/mongodata&& npm run start-ui-dev",
+    "build-all-apptivator-dev": "SET SITE_NAME=mobile-app-builder&& start npm run build-ui-dev&& start npm run build-server-dev&& start npm run start-server-dev&& start mongod --dbpath=/mongodata&& npm run start-ui-dev",
+
+    "build-ui-dev": "webpack --config web/webpack.config.dev.js --progress  --colors -w",
+    "build-server-dev": "webpack --config web/webpack.config.server.dev.js --progress  --colors -w",
+
+    "build-ui-smm-rc": "SET API_HOST=https://apptivator-rc-new.azurewebsites.net&& npm run build-ui-smm",
+    "build-ui-apptivator-rc": "SET API_HOST=https://apptivator-rc-new.azurewebsites.net&& npm run build-ui-apptivator",
+
+    "build-ui-smm": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env SITE_NAME=smm NODE_ENV=production webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
+    "build-ui-apptivator": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env SITE_NAME=mobile-app-builder NODE_ENV=production API_HOST=https://apptivator-rc-new.azurewebsites.net webpack --config web/webpack.config.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
+    "build-server-vireo_api": "del /q /s \"dist/\" \"web\\src\\client\\*.bundle\" \"web\\src\\client\\*.hot-update.js*\" & cross-env NODE_ENV=production API_HOST=https://apptivator-rc-new.azurewebsites.net webpack --config web/webpack.config.server.prod.js --progress & xcopy \"./web/src/client/.\" \"dist/client\" /I /Y /S & xcopy \"./web/src/server/.\" \"dist/server\" /I /Y /S & xcopy \"package.json\" \"dist/server\" /y",
+
     "test": "mocha --compilers js:babel-register --require babel-polyfill --recursive app/**/__tests__/*.js server/**/__tests__/*.js",
     "test:watch": "npm test -- --watch",
     "lint": "eslint app/**/*.js"
